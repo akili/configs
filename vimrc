@@ -19,7 +19,13 @@ set showmatch
 
 set nostartofline
 set backspace=indent,eol,start
+
+" Visual effects
+colorscheme desert
+set t_Co=256
 set cursorline
+hi CursorLine   cterm=bold ctermbg=235 ctermfg=NONE
+
 
 " Indentation options
 set shiftwidth=4
