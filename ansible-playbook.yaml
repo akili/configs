@@ -1,8 +1,17 @@
 ---
-- hosts: all
+- hosts: localhost
   tasks:
   - name: Run apt-get update
     become: true
     ignore_errors: yes
     apt:
       update_cache: yes
+  - name: Install apt packages
+    apt:
+      name: "{{ packages }}"
+    vars:
+      packages:
+      - git
+      - vim
+      - tmux
+      - virtualbox
