@@ -26,7 +26,6 @@ set t_Co=256
 set cursorline
 hi CursorLine   cterm=bold ctermbg=235 ctermfg=NONE
 
-
 " Indentation options
 set shiftwidth=4
 set softtabstop=4
@@ -34,3 +33,7 @@ set expandtab
 
 " Useful mappings
 nnoremap <C-L> :nohl<CR><C-L>
+
+" Useful bindings
+set pastetoggle=<F2>
+
