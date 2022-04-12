@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- hosts: 127.0.0.1
+  connection: local
   tasks:
   - name: Run apt-get update
     become: true
@@ -7,6 +8,7 @@
     apt:
       update_cache: yes
   - name: Install apt packages
+    become: true
     apt:
       name: "{{ packages }}"
     vars:
@@ -15,3 +17,4 @@
       - vim
       - tmux
       - bat
+
