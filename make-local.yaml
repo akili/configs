@@ -3,6 +3,7 @@
   connection: local
   tasks:
   - name: Run apt-get update
+    when: apt_update is defined
     become: true
     ignore_errors: yes
     apt:
@@ -17,4 +18,5 @@
       - vim
       - tmux
       - bat
+      - htop
 
