@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 echo "Введите пароль: "
-read -r pass
+# shellcheck disable=SC2162
+read pass
 
-echo "$pass" | sudo -S apt update && apt install -y python3-pip
-
-python3 -m pip install --user ansible
+echo "$pass" | sudo -S apt update
+echo "$pass" | sudo -S apt install -y ansible
 
 ansible-playbook make-local.yaml --extra-vars "ansible_sudo_pass=$pass"
