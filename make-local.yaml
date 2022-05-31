@@ -19,6 +19,8 @@
       - tmux
       - bat
       - htop
+  - name: Install ansible collection
+    shell: 'ansible-galaxy collection install community.general'
   - name: Set default git user name
     community.general.git_config:
       name: user.name
