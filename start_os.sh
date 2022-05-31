@@ -5,7 +5,7 @@ echo "Введите пароль: "
 read pass
 
 echo "$pass" | sudo -S apt update
-echo "$pass" | sudo -S apt install -y ansible
+echo "$pass" | sudo -S apt install -y ansible git
 
 mkdir akili
 cd akili || exit
