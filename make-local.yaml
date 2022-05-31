@@ -19,3 +19,13 @@
       - tmux
       - bat
       - htop
+  - name: Set default git user name
+    community.general.git_config:
+      name: user.name
+      scope: system
+      value: 'akili'
+  - name: Set default git user email
+    community.general.git_config:
+      name: user.email
+      scope: system
+      value: 'sedov.anton1986@gmail.com'
