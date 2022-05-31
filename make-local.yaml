@@ -22,14 +22,12 @@
   - name: Install ansible collection
     shell: 'ansible-galaxy collection install community.general'
   - name: Set default git user name
-    become: true
     community.general.git_config:
       name: user.name
-      scope: system
+      scope: global
       value: 'akili'
   - name: Set default git user email
-    become: true
     community.general.git_config:
       name: user.email
-      scope: system
+      scope: global
       value: 'sedov.anton1986@gmail.com'
