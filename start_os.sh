@@ -7,8 +7,7 @@ read pass
 echo "$pass" | sudo -S apt update
 echo "$pass" | sudo -S apt install -y ansible git
 
-mkdir akili
-cd akili || exit
+cd ~ || exit
 
 git clone https://github.com/akili/configs.git
 cd configs || exit
