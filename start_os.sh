@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Введите пароль: "
+echo "Убедись, что никто не подглядывает и введи пароль: "
 # shellcheck disable=SC2162
 read pass
 
