@@ -19,6 +19,11 @@
       - tmux
       - bat
       - htop
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - software-properties-common
   - name: Install ansible collection
     shell: 'ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto'
   - name: Set default git user name
@@ -38,3 +43,22 @@
   - name: Generate an OpenSSH keypair
     community.crypto.openssh_keypair:
       path: ~/.ssh/id_rsa
+
+  # Установка докера
+  - name: Add apt-key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+  - name: Add docker repo
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu focal stable
+  - name: Install docker
+    apt:
+      name:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+      update_cache: yes
+  - name: Add user permissions
+    shell: "usermod -aG docker {{ lookup('env','USER') }}"
+
+  
