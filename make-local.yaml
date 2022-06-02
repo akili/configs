@@ -32,9 +32,9 @@
       scope: global
       value: 'sedov.anton1986@gmail.com'
   - name: Create folder for ssh
-  file:
-    path: ~/.ssh
-    state: directory
+    file:
+      path: ~/.ssh
+      state: directory
   - name: Generate an OpenSSH keypair
     community.crypto.openssh_keypair:
       path: ~/.ssh/id_rsa
