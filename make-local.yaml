@@ -20,7 +20,7 @@
       - bat
       - htop
   - name: Install ansible collection
-    shell: 'ansible-galaxy collection install community.general'
+    shell: 'ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto'
   - name: Set default git user name
     community.general.git_config:
       name: user.name
@@ -31,3 +31,6 @@
       name: user.email
       scope: global
       value: 'sedov.anton1986@gmail.com'
+  - name: Generate an OpenSSH keypair
+    community.crypto.openssh_keypair:
+      path: ~/.ssh/id_rsa
