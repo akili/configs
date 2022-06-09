@@ -74,6 +74,6 @@
   # zsh
   - name: Make zsh default shell
     become: true
-    shell: 'chsh -s /usr/bin/zsh'
+    shell: 'chsh -s /usr/bin/zsh akili'
   - name: Install oh-my-zsh
     shell: 'sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
