@@ -26,6 +26,7 @@
       - software-properties-common
       - build-essential
       - zsh
+      - stow
   - name: Install ansible collection
     shell: 'ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto'
   - name: Set default git user name
@@ -77,3 +78,4 @@
     shell: 'chsh -s /usr/bin/zsh akili'
   - name: Install oh-my-zsh
     shell: '[ ! -d "~/.oh-my-zsh" ] && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+
