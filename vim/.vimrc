@@ -36,4 +36,3 @@ nnoremap <C-L> :nohl<CR><C-L>
 
 " Useful bindings
 set pastetoggle=<F2>
-
