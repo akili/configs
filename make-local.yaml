@@ -27,6 +27,7 @@
       - build-essential
       - zsh
       - stow
+      - tig
   - name: Install ansible collection
     shell: 'ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto'
   - name: Set default git user name
@@ -76,6 +77,11 @@
   - name: Make zsh default shell
     become: true
     shell: 'chsh -s /usr/bin/zsh akili'
+  - name: Register oh-my-zsh folder
+    stat:
+      path: "~/.oh-my-zsh"
+    register: ohmyzsh
   - name: Install oh-my-zsh
-    shell: '[ ! -d "~/.oh-my-zsh" ] && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+    shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    when: not ohmyzsh.stat.exists
 
