@@ -28,6 +28,8 @@
       - zsh
       - stow
       - tig
+      - neovim
+      - npm
   - name: Install ansible collection
     shell: 'ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto'
   - name: Set default git user name
@@ -84,4 +86,10 @@
   - name: Install oh-my-zsh
     shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     when: not ohmyzsh.stat.exists
+
+
+  # neovim
+  - name: Install pyright
+    become: true
+    shell: npm -g install pyright
 
