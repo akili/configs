@@ -14,3 +14,8 @@ CONFIG_DIR='configs'
 cd $CONFIG_DIR && git pull
 
 ansible-playbook make-local.yaml --extra-vars "ansible_sudo_pass=$pass"
+
+stow vim
+stow nvim
+stow tmux
+
