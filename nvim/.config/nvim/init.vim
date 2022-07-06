@@ -1,4 +1,6 @@
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+    Plug 'neovim/nvim-lspconfig'
+
     Plug 'lifepillar/vim-solarized8', { 'dir': '~/.config/nvim/colors/solarized8' }
     Plug 'majutsushi/tagbar'
     Plug 'preservim/nerdtree'
@@ -9,6 +11,8 @@ set termguicolors
 set background=dark
 colorscheme solarized8
 
+set encoding=utf-8
+set scrolloff=7
 set nocompatible            " disable compatibility to old-time vi
 set showmatch               " show matching
 set ignorecase              " case insensitive
@@ -25,7 +29,6 @@ set wildmode=longest,list   " get bash-like tab completions
 set cc=80                  " set an 80 column border for good coding style
 filetype plugin indent on   "allow auto-indenting depending on file type
 syntax on                   " syntax highlighting
-" set mouse=a                 " enable mouse click
 set clipboard=unnamedplus   " using system clipboard
 filetype plugin on
 set cursorline              " highlight current cursorline
@@ -35,6 +38,9 @@ set ttyfast                 " Speed up scrolling in Vim
 " set backupdir=~/.cache/vim " Directory to store backup files.
 
 let mapleader = " "
+
+" turn off search highlight
+nnoremap ,<space> :nohlsearch<CR>
 
 :au FocusLost * :wa
 
