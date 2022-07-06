@@ -1,2 +1,4 @@
 *.retry
 *.idea
+nvim/.config/nvim/colors/*
+
