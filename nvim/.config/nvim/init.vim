@@ -34,7 +34,7 @@ filetype plugin on
 set cursorline              " highlight current cursorline
 set ttyfast                 " Speed up scrolling in Vim
 " set spell                 " enable spell check (may need to download language package)
-" set noswapfile            " disable creating swap file
+set noswapfile            " disable creating swap file
 " set backupdir=~/.cache/vim " Directory to store backup files.
 
 let mapleader = " "
@@ -54,7 +54,7 @@ nmap <F8> :TagbarToggle<CR>
 let g:tagbar_compact = 1
 
 " https://github.com/preservim/nerdtree
-noremap <F6> :NERDTreeRefreshRoot<CR> :NERDTreeToggle<CR>
+noremap <F2> :NERDTreeRefreshRoot<CR> :NERDTreeToggle<CR>
 
 " https://github.com/vim-airline/vim-airline
 let g:airline#extensions#tabline#enabled = 1
@@ -67,5 +67,5 @@ noremap <A-w> :bd<CR>
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-
+let NERDTreeShowHidden=1
 
