@@ -53,13 +53,20 @@ nnoremap ,<space> :nohlsearch<CR>
 set splitright
 set splitbelow
 
+
 " https://github.com/preservim/tagbar
 nmap <F8> :TagbarToggle<CR>
 " autocmd VimEnter *.py,*.pl,*.js,*.php TagbarToggle
 let g:tagbar_compact = 1
 
+
 " https://github.com/preservim/nerdtree
+nnoremap <leader>n :NERDTreeFocus<CR>
 noremap <F2> :NERDTreeRefreshRoot<CR> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+
 
 " https://github.com/vim-airline/vim-airline
 let g:airline#extensions#tabline#enabled = 1
@@ -67,13 +74,6 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 noremap <S-h> :bp<CR>
 noremap <S-l> :bn<CR>
 noremap <A-w> :bd<CR>
-
-" https://github.com/preservim/nerdtree
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-
 
 
 """Примерные конфиги."""
@@ -261,10 +261,6 @@ endfunction
 command! -bang -complete=buffer -nargs=? Bclose call <SID>Bclose(<q-bang>, <q-args>)
 nnoremap <silent> <Leader>bd :Bclose<CR>
 
-
-map gn :bn<cr>
-map gp :bp<cr>
-map gw :Bclose<cr>
 
 " run current script with python3 by CTRL+R in command and insert mode
 autocmd FileType python map <buffer> <C-r> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>

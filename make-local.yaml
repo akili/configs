@@ -32,6 +32,7 @@
       - npm
       - fzf
       - python3-pip
+      - exuberant-ctags
   - name: Install ansible collection
     shell: 'ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto'
   - name: Set default git user name
