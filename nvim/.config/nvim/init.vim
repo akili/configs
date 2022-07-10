@@ -9,6 +9,8 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'L3MON4D3/LuaSnip'
+
+    Plug 'Pocco81/AutoSave.nvim'
 call plug#end()
 
 set termguicolors
@@ -132,8 +134,6 @@ cmp.setup {
   },
 }
 EOF
-
-
 
 
 lua << EOF
