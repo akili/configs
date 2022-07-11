@@ -28,7 +28,6 @@
       - zsh
       - stow
       - tig
-      - neovim
       - npm
       - fzf
       - python3-pip
@@ -97,6 +96,9 @@
       dest: '~/.tmux/plugins/tpm'
 
   # neovim
+  - name: Install neovim
+    become: true
+    shell: snap install nvim --classic
   - name: Install pyright
     become: true
     shell: npm -g install pyright
