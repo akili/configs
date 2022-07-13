@@ -76,6 +76,10 @@
     become: true
     pip:
       name: docker-compose
+  - name: Install poetry
+    become: true
+    pip:
+      name: poetry
 
   # zsh
   - name: Make zsh default shell

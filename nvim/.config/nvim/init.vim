@@ -3,7 +3,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'majutsushi/tagbar'
     Plug 'preservim/nerdtree'
     Plug 'vim-airline/vim-airline'
-
     Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-nvim-lsp'
@@ -90,9 +89,6 @@ local luasnip = require 'luasnip'
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
-  completion = {
-    autocomplete = false
-  },
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
