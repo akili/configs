@@ -17,7 +17,7 @@ set background=dark
 colorscheme solarized8
 
 set encoding=utf-8
-set scrolloff=7
+set scrolloff=10
 set nocompatible            " disable compatibility to old-time vi
 set showmatch               " show matching
 set ignorecase              " case insensitive
@@ -77,7 +77,7 @@ noremap <S-l> :bn<CR>
 noremap <A-w> :bd<CR>
 
 
-"""Примерные конфиги."""
+"""Конфиги плагинов."""
 
 lua << EOF
 -- Set completeopt to have a better completion experience
@@ -183,7 +183,6 @@ end
 EOF
 
 
-
 " Delete buffer while keeping window layout (don't close buffer's windows).
 " Version 2008-11-18 from http://vim.wikia.com/wiki/VimTip165
 if v:version < 700 || exists('loaded_bclose') || &cp
@@ -261,4 +260,27 @@ nnoremap <silent> <Leader>bd :Bclose<CR>
 " run current script with python3 by CTRL+R in command and insert mode
 autocmd FileType python map <buffer> <C-r> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <C-r> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
+
+" AutoSave settings
+lua << EOF
+local autosave = require("autosave")
+autosave.setup(
+    {
+        enabled = true,
+        execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
+        events = {"InsertLeave", "TextChanged"},
+        conditions = {
+            exists = true,
+            filename_is_not = {},
+            filetype_is_not = {},
+            modifiable = true
+        },
+        write_all_buffers = false,
+        on_off_commands = true,
+        clean_command_line_interval = 0,
+        debounce_delay = 135
+    }
+)
+EOF
 
