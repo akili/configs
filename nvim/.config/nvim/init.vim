@@ -8,8 +8,10 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'L3MON4D3/LuaSnip'
-
     Plug 'Pocco81/AutoSave.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 call plug#end()
 
 set termguicolors
@@ -282,5 +284,14 @@ autosave.setup(
         debounce_delay = 135
     }
 )
+EOF
+
+
+" Telescope settings
+nnoremap ,f <cmd>Telescope find_files<cr>
+nnoremap ,g <cmd>Telescope live_grep<cr>
+" Telescope fzf plugin
+lua << EOF
+require('telescope').load_extension('fzf')
 EOF
 
