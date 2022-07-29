@@ -12,6 +12,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+    Plug 'jose-elias-alvarez/typescript.nvim'
 call plug#end()
 
 set termguicolors
@@ -293,5 +294,11 @@ nnoremap ,g <cmd>Telescope live_grep<cr>
 " Telescope fzf plugin
 lua << EOF
 require('telescope').load_extension('fzf')
+EOF
+
+
+" JavaScript/TypeScipt
+lua << EOF
+require("typescript").setup()
 EOF
 
