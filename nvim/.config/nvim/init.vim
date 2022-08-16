@@ -344,8 +344,8 @@ EOF
 
 
 " Treesitter
-" TSInstall cpp (если плагины не поставились)
 lua << EOF
+require'nvim-treesitter.install'.compilers = { 'clang' }
 require'nvim-treesitter.configs'.setup {
     textobjects = {
         move = {
