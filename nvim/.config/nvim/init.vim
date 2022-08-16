@@ -13,6 +13,9 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
     Plug 'jose-elias-alvarez/typescript.nvim'
+
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 call plug#end()
 
 set termguicolors
@@ -51,7 +54,7 @@ let mapleader = " "
 " turn off search highlight
 nnoremap ,<space> :nohlsearch<CR>
 
-:au FocusLost * :wa
+:au FocusLost * :w!
 
 " open new split panes to right and below
 set splitright
@@ -337,5 +340,35 @@ EOF
 " JavaScript/TypeScipt
 lua << EOF
 require("typescript").setup()
+EOF
+
+
+" Treesitter
+" TSInstall cpp (если плагины не поставились)
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+    textobjects = {
+        move = {
+            enable = true,
+            set_jumps = true,
+            goto_next_start = {
+                [']m'] = '@function.outer',
+                [']]'] = '@class.outer'
+            },
+            goto_next_end = {
+                [']M'] = '@function.outer',
+                [']['] = '@class.outer'
+            },
+            goto_previous_start = {
+                ['[m'] = '@function.outer',
+                ['[['] = '@class.outer'
+            },
+            goto_previous_end = {
+                ['[M'] = '@function.outer',
+                ['[]'] = '@class.outer'
+            }
+        }
+    }
+}
 EOF
 
