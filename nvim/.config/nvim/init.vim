@@ -16,6 +16,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+    Plug 'nvim-treesitter/nvim-treesitter-context'
 call plug#end()
 
 set termguicolors
@@ -346,6 +347,7 @@ EOF
 " Treesitter
 lua << EOF
 require'nvim-treesitter.install'.compilers = { 'clang' }
+
 require'nvim-treesitter.configs'.setup {
     textobjects = {
         move = {
@@ -370,5 +372,27 @@ require'nvim-treesitter.configs'.setup {
         }
     }
 }
-EOF
 
+-- https://github.com/nvim-treesitter/nvim-treesitter-context
+require'treesitter-context'.setup{
+    enable = true,
+    max_lines = 0,
+    trim_scope = 'outer',
+    patterns = {
+        default = {
+            'class',
+            'function',
+            'method',
+            -- 'for', -- These won't appear in the context
+            -- 'while',
+            -- 'if',
+            -- 'switch',
+            -- 'case',
+        },
+    },
+    exact_patterns = {},
+    zindex = 20,
+    mode = 'cursor',
+    separator = '-',
+}
+EOF
