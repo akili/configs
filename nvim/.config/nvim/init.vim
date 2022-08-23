@@ -17,6 +17,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
     Plug 'nvim-treesitter/nvim-treesitter-context'
+    Plug 'folke/zen-mode.nvim'
 call plug#end()
 
 set termguicolors
@@ -395,4 +396,13 @@ require'treesitter-context'.setup{
     mode = 'cursor',
     separator = '-',
 }
+
+require("zen-mode").setup {
+    window = {
+        backdrop = 0.8,
+        widht = 120,
+    },
+}
 EOF
+nnoremap <A-z> <cmd>ZenMode<cr>
+
