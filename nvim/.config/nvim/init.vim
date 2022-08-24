@@ -56,7 +56,7 @@ let mapleader = " "
 " turn off search highlight
 nnoremap ,<space> :nohlsearch<CR>
 
-:au FocusLost * :w!
+:au FocusLost * :wa
 
 " open new split panes to right and below
 set splitright
