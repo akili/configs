@@ -18,6 +18,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
     Plug 'nvim-treesitter/nvim-treesitter-context'
     Plug 'folke/zen-mode.nvim'
+    Plug 'rhysd/git-messenger.vim'
 call plug#end()
 
 set termguicolors
@@ -404,5 +405,9 @@ require("zen-mode").setup {
     },
 }
 EOF
+
 nnoremap <A-z> <cmd>ZenMode<cr>
+
+" https://github.com/rhysd/git-messenger.vim
+nnoremap <Leader>gm :GitMessenger<CR>
 
