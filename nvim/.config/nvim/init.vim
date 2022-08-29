@@ -13,12 +13,12 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
     Plug 'jose-elias-alvarez/typescript.nvim'
-
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
     Plug 'nvim-treesitter/nvim-treesitter-context'
     Plug 'folke/zen-mode.nvim'
     Plug 'rhysd/git-messenger.vim'
+    Plug 'hoschi/yode-nvim'
 call plug#end()
 
 set termguicolors
@@ -410,4 +410,18 @@ nnoremap <A-z> <cmd>ZenMode<cr>
 
 " https://github.com/rhysd/git-messenger.vim
 nnoremap <Leader>gm :GitMessenger<CR>
+
+" https://github.com/hoschi/yode-nvim
+lua require('yode-nvim').setup({})
+map <Leader>yc :YodeCreateSeditorFloating<CR>
+map <Leader>yr :YodeCreateSeditorReplace<CR>
+nmap <Leader>bd :YodeBufferDelete<cr>
+imap <Leader>bd <esc>:YodeBufferDelete<cr>
+" these commands fall back to overwritten keys when cursor is in split window
+map <C-W>r :YodeLayoutShiftWinDown<CR>
+map <C-W>R :YodeLayoutShiftWinUp<CR>
+map <C-W>J :YodeLayoutShiftWinBottom<CR>
+map <C-W>K :YodeLayoutShiftWinTop<CR>
+" at the moment this is needed to have no gap for floating windows
+set showtabline=2
 
