@@ -33,11 +33,12 @@
       - python3-pip
       - exuberant-ctags
       - ripgrep
-      - keepassxc # apps for work
+      - keepassxc
       - telegram-desktop
       - pwgen
       - jq
       - clang
+      - gnome-shell-pomodoro
   - name: Install ansible collection
     shell: 'ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto'
   - name: Set default git user name
