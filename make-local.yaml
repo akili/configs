@@ -120,9 +120,14 @@
       dest: '~/.tmux/plugins/tpm'
 
   # neovim
+  - name: Download neovim
+    get_url:
+      url: https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.deb
+      dest: /tmp/
   - name: Install neovim
     become: true
-    shell: snap install nvim --classic
+    apt:
+      deb: /tmp/nvim-linux64.deb
   - name: Install npm packages
     become: true
     shell: npm -g install pyright typescript-language-server typescript
