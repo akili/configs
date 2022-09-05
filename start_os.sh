@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo "Убедись, что никто не подглядывает и введи пароль: "
+echo -n "Root password: "
 # shellcheck disable=SC2162
-read pass
+read -s pass
 
 echo "$pass" | sudo -S apt update
 echo "$pass" | sudo -S apt install -y ansible git python3-pip

@@ -31,7 +31,6 @@
       - npm
       - fzf
       - exuberant-ctags
-      - ripgrep
       - keepassxc
       - telegram-desktop
       - pwgen
