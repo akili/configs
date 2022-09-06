@@ -56,6 +56,9 @@
   - name: Generate an OpenSSH keypair
     community.crypto.openssh_keypair:
       path: ~/.ssh/id_rsa
+  - name: Change hostname
+    become: true
+    shell: "hostname {{ lookup('env','USER') }}"
 
   # Установка докера
   - name: Add apt-key
