@@ -139,3 +139,11 @@
     become: true
     shell: snap install notion-snap
 
+  - name: Install postman
+    become: true
+    shell: snap install postman
+
+  - name: Remove dependencies that are no longer required
+    apt:
+      autoremove: yes
+
