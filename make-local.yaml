@@ -141,7 +141,18 @@
     become: true
     shell: snap install postman
 
+  - name: Download google chrome
+    become: true
+    get_url:
+      url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      dest: /tmp/
+  - name: Install google chrome
+    become: true
+    apt:
+      deb: /tmp/google-chrome-stable_current_amd64.deb
+
   - name: Remove dependencies that are no longer required
+    become: true
     apt:
       autoremove: yes
 
