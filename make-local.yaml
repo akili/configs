@@ -109,6 +109,11 @@
       path: ~/.zshrc
       search_string: 'plugins=(git)'
       line: 'plugins=(git docker-compose command-not-found common-aliases zsh-autosuggestions zsh-syntax-highlighting poetry)'
+  - name: Change theme
+    lineinfile:
+      path: ~/.zshrc
+      search_string: 'ZSH_THEME="robbyrussell"'
+      line: 'ZSH_THEME="agnoster"'
 
   # tmux
   - name: Install tmux plugin manager
