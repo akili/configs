@@ -14,7 +14,7 @@ CONFIG_DIR='configs'
 cd $CONFIG_DIR && git pull origin master
 
 python3 -m pip install --upgrade --user ansible
-ansible-playbook make-local.yaml --extra-vars "ansible_sudo_pass=$pass"
+ansible-playbook make-local.yaml -i hosts --extra-vars "ansible_sudo_pass=$pass"
 
 stow vim
 stow nvim
