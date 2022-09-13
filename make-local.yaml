@@ -38,6 +38,7 @@
       - clang
       - gnome-shell-pomodoro
       - ripgrep
+      - pass
   - name: Install ansible collection
     shell: 'ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto'
   - name: Set default git user name
@@ -83,7 +84,7 @@
     pip:
       name:
         - docker-compose
-        - poetry
+        - poetry 
 
   # zsh
   - name: Make zsh default shell
