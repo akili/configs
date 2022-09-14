@@ -38,7 +38,6 @@
       - clang
       - gnome-shell-pomodoro
       - ripgrep
-      - pass
   - name: Install ansible collection
     shell: 'ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto'
   - name: Set default git user name
@@ -84,7 +83,7 @@
     pip:
       name:
         - docker-compose
-        - poetry 
+        - poetry
 
   # zsh
   - name: Make zsh default shell
@@ -115,6 +114,15 @@
       path: ~/.zshrc
       search_string: 'ZSH_THEME="robbyrussell"'
       line: 'ZSH_THEME="agnoster"'
+  - name: Delete host name from prompt
+    blockinfile:
+      path: ~/.zshrc
+      block: |
+        prompt_context() {
+          if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+            prompt_segment black default {% raw %}"%(!.%{%F{yellow}%}.)$USER"{% endraw %} 
+          fi
+        }
 
   # tmux
   - name: Install tmux plugin manager
