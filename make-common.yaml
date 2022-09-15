@@ -40,16 +40,6 @@
       - ripgrep
   - name: Install ansible collection
     shell: 'ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto'
-  - name: Set default git user name
-    community.general.git_config:
-      name: user.name
-      scope: global
-      value: 'akili'
-  - name: Set default git user email
-    community.general.git_config:
-      name: user.email
-      scope: global
-      value: 'sedov.anton1986@gmail.com'
   - name: Create folder for ssh
     file:
       path: ~/.ssh
