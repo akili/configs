@@ -40,6 +40,16 @@
       - ripgrep
   - name: Install ansible collection
     shell: 'ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto'
+
+  # Configurate repo with this configs
+  - name: Set ssh remote origin url
+    community.general.git_config:
+      scope: local
+      repo: ~/configs
+      name: remote.origin.url
+      value: 'git@github.com:akili/configs.git'
+
+  # SSH
   - name: Create folder for ssh
     file:
       path: ~/.ssh
@@ -48,7 +58,7 @@
     community.crypto.openssh_keypair:
       path: ~/.ssh/id_rsa
 
-  # Установка докера
+  # Docker
   - name: Add apt-key
     become: true
     apt_key:

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Work(1) or home(2)?"
+echo -n "Work(1) or home(2): "
 # shellcheck disable=SC2162
 read locality
 

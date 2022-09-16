@@ -2,6 +2,8 @@
 - hosts: 127.0.0.1
   connection: local
   tasks:
+
+  # Git
   - name: Set default git user name
     community.general.git_config:
       name: user.name
@@ -12,4 +14,18 @@
       name: user.email
       scope: global
       value: 'anton.sedov@webpp.ru'
+
+  # Configurate repo with this configs
+  - name: Set default git user name for configs folder
+    community.general.git_config:
+      scope: local
+      repo: ~/configs
+      name: user.name
+      value: 'akili'
+  - name: Set default git user email for configs folder
+    community.general.git_config:
+      scope: local
+      repo: ~/configs
+      name: user.email
+      value: 'sedov.anton1986@gmail.com'
 
