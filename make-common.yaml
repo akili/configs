@@ -139,6 +139,7 @@
     become: true
     apt:
       deb: /tmp/nvim-linux64.deb
+      force: yes
   - name: Install npm packages
     become: true
     shell: npm -g install pyright typescript-language-server typescript
