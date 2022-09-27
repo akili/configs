@@ -409,7 +409,7 @@ EOF
 nnoremap <A-z> <cmd>ZenMode<cr>
 
 " https://github.com/rhysd/git-messenger.vim
-nnoremap <Leader>gm :GitMessenger<CR>
+nnoremap <C-g> :GitMessenger<CR>
 
 " https://github.com/hoschi/yode-nvim
 lua require('yode-nvim').setup({})
