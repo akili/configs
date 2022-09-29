@@ -24,6 +24,8 @@ call plug#end()
 set termguicolors
 set background=dark
 colorscheme solarized8
+" transparent background
+hi Normal guibg=NONE ctermbg=NONE
 
 set encoding=utf-8
 set scrolloff=10
@@ -385,11 +387,6 @@ require'treesitter-context'.setup{
             'class',
             'function',
             'method',
-            -- 'for', -- These won't appear in the context
-            -- 'while',
-            -- 'if',
-            -- 'switch',
-            -- 'case',
         },
     },
     exact_patterns = {},
@@ -398,12 +395,14 @@ require'treesitter-context'.setup{
     separator = '-',
 }
 
+-- https://github.com/folke/zen-mode.nvim
 require("zen-mode").setup {
     window = {
         backdrop = 0.8,
         widht = 120,
     },
 }
+
 EOF
 
 nnoremap <A-z> <cmd>ZenMode<cr>
