@@ -39,6 +39,7 @@
       - gnome-shell-pomodoro
       - ripgrep
       - net-tools
+      - spellcheck
   - name: Install ansible collection
     shell: 'ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto'
 

@@ -23,7 +23,7 @@ call plug#end()
 
 set termguicolors
 set background=dark
-colorscheme solarized8_low
+colorscheme solarized8_high
 " transparent background
 hi Normal guibg=NONE ctermbg=NONE
 
