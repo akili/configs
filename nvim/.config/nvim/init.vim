@@ -16,6 +16,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
     Plug 'nvim-treesitter/nvim-treesitter-context'
+    Plug 'JoosepAlviste/nvim-ts-context-commentstring'
     Plug 'folke/zen-mode.nvim'
     Plug 'rhysd/git-messenger.vim'
     Plug 'hoschi/yode-nvim'
@@ -375,6 +376,7 @@ require'nvim-treesitter.configs'.setup {
             }
         }
     }
+    context_commentstring = {enable = true}
 }
 
 -- https://github.com/nvim-treesitter/nvim-treesitter-context
