@@ -345,7 +345,13 @@ EOF
 
 " JavaScript/TypeScipt
 lua << EOF
-require("typescript").setup()
+require('typescript').setup({
+    disable_commands = false,
+    debug = false,
+    go_to_source_definition = {
+        fallback = true,
+    }
+})
 EOF
 
 
@@ -353,7 +359,7 @@ EOF
 lua << EOF
 require'nvim-treesitter.install'.compilers = { 'clang' }
 
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter.configs'.setup({
     textobjects = {
         move = {
             enable = true,
@@ -375,12 +381,12 @@ require'nvim-treesitter.configs'.setup {
                 ['[]'] = '@class.outer'
             }
         }
-    }
+    },
     context_commentstring = {enable = true}
-}
+})
 
 -- https://github.com/nvim-treesitter/nvim-treesitter-context
-require'treesitter-context'.setup{
+require'treesitter-context'.setup({
     enable = true,
     max_lines = 0,
     trim_scope = 'outer',
@@ -395,16 +401,15 @@ require'treesitter-context'.setup{
     zindex = 20,
     mode = 'cursor',
     separator = '-',
-}
+})
 
 -- https://github.com/folke/zen-mode.nvim
-require("zen-mode").setup {
+require("zen-mode").setup({
     window = {
         backdrop = 0.8,
         widht = 120,
-    },
-}
-
+    }
+})
 EOF
 
 nnoremap <A-z> <cmd>ZenMode<cr>
