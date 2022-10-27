@@ -11,9 +11,9 @@
   - name: Install apt packages
     become: true
     apt:
-      name: "{{ packages }}"
+      name: "{{ package }}"
     vars:
-      packages:
+      package:
       - git
       - vim
       - tmux
@@ -145,7 +145,18 @@
       force: yes
   - name: Install npm packages
     become: true
-    shell: npm -g install pyright typescript-language-server typescript dockerfile-language-server-nodejs yaml-language-server
+    npm:
+      name: "{{ item }}"
+      global: true
+    with_items:
+      - pyright
+      - typescript
+      - typescript-language-server
+      - dockerfile-language-server-nodejs
+      - yaml-language-server
+      - bash-language-server
+
+
   - name: Install plugin manager
     shell: sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   - name: Set nvim default git editor
