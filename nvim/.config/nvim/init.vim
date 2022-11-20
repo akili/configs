@@ -23,10 +23,8 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 call plug#end()
 
 set termguicolors
-set background=dark
 colorscheme solarized8_high
-" transparent background
-hi Normal guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE " transparent background
 
 set encoding=utf-8
 set scrolloff=10
