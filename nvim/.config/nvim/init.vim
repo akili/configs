@@ -20,6 +20,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'folke/zen-mode.nvim'
     Plug 'rhysd/git-messenger.vim'
     Plug 'hoschi/yode-nvim'
+    Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 set termguicolors
