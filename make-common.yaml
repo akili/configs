@@ -41,6 +41,7 @@
       - net-tools
       - shellcheck
       - shfmt
+      - fd-find
   - name: Install ansible collection
     shell: 'ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto'
 
