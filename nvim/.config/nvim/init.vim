@@ -23,6 +23,10 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
+let g:loaded_node_provider = 0
+let g:loaded_perl_provider = 0
+let g:loaded_ruby_provider = 0
+
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/hotkeys.vim
 
