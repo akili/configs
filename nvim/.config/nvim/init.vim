@@ -21,6 +21,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'rhysd/git-messenger.vim'
     Plug 'hoschi/yode-nvim'
     Plug 'jiangmiao/auto-pairs'
+    Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 let g:loaded_node_provider = 0
