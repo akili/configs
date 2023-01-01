@@ -158,7 +158,6 @@
       - yaml-language-server
       - bash-language-server
 
-
   - name: Install plugin manager
     shell: sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   - name: Set nvim default git editor
@@ -187,3 +186,15 @@
     apt:
       autoremove: yes
 
+  # Hack Nerd Fonts
+  - name: Create folder for fonts
+    file:
+      path: ~/.local/share/fonts
+      state: directory
+  - name: Download fonts
+    unarchive:
+      src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip
+      dest: ~/.local/share/fonts
+      remote_src: yes
+  - name: Clear fonts cache
+    shell: fc-cache -fv
