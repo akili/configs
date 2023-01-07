@@ -31,6 +31,10 @@ let g:loaded_ruby_provider = 0
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/hotkeys.vim
 
+" plugins setings
+source $HOME/.config/nvim/plugins/airline.vim
+
+
 " https://github.com/preservim/tagbar
 nmap <F8> :TagbarToggle<CR>
 " autocmd VimEnter *.py,*.pl,*.js,*.php TagbarToggle
@@ -43,14 +47,6 @@ noremap <F2> :NERDTreeRefreshRoot<CR> :NERDTreeToggle<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-
-
-" https://github.com/vim-airline/vim-airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-noremap <S-h> :bp<CR>
-noremap <S-l> :bn<CR>
-noremap <A-w> :bd<CR>
 
 
 """ Полезные хоткеи
