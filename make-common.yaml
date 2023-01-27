@@ -199,8 +199,3 @@
   - name: Clear fonts cache
     shell: fc-cache -fv
 
-  # lsd https://github.com/Peltoche/lsd
-  - name: Install lsd
-    become: true
-    shell: snap install lsd
-
