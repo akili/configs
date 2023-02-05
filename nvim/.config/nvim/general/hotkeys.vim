@@ -30,3 +30,6 @@ nnoremap <C-l> <C-w>l
 " Close tab
 noremap <A-w> :bd<CR>
 
+" Macros automatization
+noremap <A-q> :'<,'>normal @a<CR>
+
