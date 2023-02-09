@@ -35,6 +35,7 @@ set noswapfile              " disable creating swap file
 set fileformat=unix
 set hidden                  " Required to keep multiple buffers open multiple buffers
 set formatoptions-=cro      " Stop newline continution of comments
+set spell spelllang=en_us,ru
 
 :au FocusLost * :wa
 

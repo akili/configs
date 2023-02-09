@@ -20,6 +20,8 @@ set showmatch
 set nostartofline
 set backspace=indent,eol,start
 
+set spell spelllang=en_us,ru
+
 " Visual effects
 colorscheme desert
 set t_Co=256
