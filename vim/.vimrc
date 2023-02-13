@@ -21,6 +21,7 @@ set nostartofline
 set backspace=indent,eol,start
 
 set spell spelllang=en_us,ru
+au BufNewFile,BufRead *.txt,*.md set complete+=k
 
 " Visual effects
 colorscheme desert
