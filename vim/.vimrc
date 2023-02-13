@@ -22,6 +22,7 @@ set backspace=indent,eol,start
 
 set spell spelllang=en_us,ru
 au BufNewFile,BufRead *.txt,*.md set complete+=k
+highlight SpellBad ctermfg=009 ctermbg=020 guifg=#0011ff guibg=#ffff00
 
 " Visual effects
 colorscheme desert
