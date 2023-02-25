@@ -34,5 +34,4 @@ fi
 stow vim
 stow nvim
 stow tmux
-stow lsd
 
