@@ -22,6 +22,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'hoschi/yode-nvim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'ryanoasis/vim-devicons'
+    Plug 'unblevable/quick-scope'
 call plug#end()
 
 let g:loaded_node_provider = 0
@@ -33,6 +34,7 @@ source $HOME/.config/nvim/general/hotkeys.vim
 
 " plugins setings
 source $HOME/.config/nvim/plugins/airline.vim
+source $HOME/.config/nvim/plugins/quickscope.vim
 
 
 " https://github.com/preservim/tagbar
