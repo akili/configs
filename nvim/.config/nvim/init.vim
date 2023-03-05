@@ -24,6 +24,9 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'ryanoasis/vim-devicons'
     Plug 'unblevable/quick-scope'
     Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'tpope/vim-fugitive'
+    Plug 'junegunn/gv.vim'
 call plug#end()
 
 let g:loaded_node_provider = 0
