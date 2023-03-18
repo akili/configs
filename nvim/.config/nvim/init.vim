@@ -18,12 +18,14 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'nvim-treesitter/nvim-treesitter-context'
     Plug 'JoosepAlviste/nvim-ts-context-commentstring'
     Plug 'folke/zen-mode.nvim'
-    Plug 'rhysd/git-messenger.vim'
     Plug 'hoschi/yode-nvim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'ryanoasis/vim-devicons'
     Plug 'unblevable/quick-scope'
     Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
+
+    " Git
+    Plug 'rhysd/git-messenger.vim'
     Plug 'airblade/vim-gitgutter'
     Plug 'tpope/vim-fugitive'
     Plug 'junegunn/gv.vim'
