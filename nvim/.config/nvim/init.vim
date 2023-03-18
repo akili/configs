@@ -29,6 +29,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'airblade/vim-gitgutter'
     Plug 'tpope/vim-fugitive'
     Plug 'junegunn/gv.vim'
+    Plug 'f-person/git-blame.nvim'
 call plug#end()
 
 let g:loaded_node_provider = 0
@@ -42,6 +43,7 @@ source $HOME/.config/nvim/general/hotkeys.vim
 source $HOME/.config/nvim/plugins/airline.vim
 source $HOME/.config/nvim/plugins/quickscope.vim
 source $HOME/.config/nvim/plugins/toggle_lsp.lua
+source $HOME/.config/nvim/plugins/git_blame.vim
 
 
 " https://github.com/preservim/tagbar
