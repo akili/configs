@@ -6,8 +6,8 @@ inoremap jk <Esc>
 " Use alt + hjkl to resize windows
 nnoremap <S-down>   :resize -2<CR>
 nnoremap <S-up>     :resize +2<CR>
-nnoremap <S-right>  :vertical resize -2<CR>
-nnoremap <S-left>   :vertical resize +2<CR>
+nnoremap <S-right>  :vertical resize +2<CR>
+nnoremap <S-left>   :vertical resize -2<CR>
 
 " TAB in general mode will move to text buffer
 nnoremap <TAB> :bnext<CR>
