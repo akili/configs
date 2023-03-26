@@ -33,3 +33,5 @@ noremap <A-w> :bd<CR>
 " Macros automatization
 noremap <A-q> :'<,'>normal @a<CR>
 
+" Fix bug with wide cmd line
+noremap <leader>w :wincmd _<CR>
