@@ -24,6 +24,8 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'unblevable/quick-scope'
     Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
     Plug 'justinmk/vim-sneak'
+    Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+    Plug 'nvim-tree/nvim-web-devicons'
 
     " Git
     Plug 'rhysd/git-messenger.vim'
