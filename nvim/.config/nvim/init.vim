@@ -48,6 +48,7 @@ source $HOME/.config/nvim/plugins/airline.vim
 source $HOME/.config/nvim/plugins/quickscope.vim
 source $HOME/.config/nvim/plugins/toggle_lsp.lua
 source $HOME/.config/nvim/plugins/git_blame.vim
+source $HOME/.config/nvim/plugins/fzf.lua
 
 
 " https://github.com/preservim/tagbar

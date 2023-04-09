@@ -1,0 +1,7 @@
+vim.keymap.set('n', '<Leader>b', '<Cmd>FzfLua buffers<CR>')
+vim.keymap.set('n', '<Leader>ff', '<Cmd>FzfLua files<CR>')
+vim.keymap.set('n', '<Leader>fh', '<Cmd>FzfLua oldfiles<CR>')
+vim.keymap.set('n', '<Leader>fs', '<Cmd>FzfLua lines<CR>')
+vim.keymap.set('n', '<Leader>fl', '<Cmd>FzfLua lines<CR>')
+vim.keymap.set('n', '<Leader>fw', '<Cmd>FzfLua grep_cword<CR>')
+vim.keymap.set('n', '<Leader>gst', '<Cmd>FzfLua git_status<CR>')
