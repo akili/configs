@@ -91,6 +91,7 @@
         - docker-compose
         - poetry
         - pynvim
+        - ipython
 
   # zsh
   - name: Make zsh default shell
