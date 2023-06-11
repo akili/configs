@@ -51,13 +51,7 @@ source $HOME/.config/nvim/plugins/quickscope.vim
 source $HOME/.config/nvim/plugins/toggle_lsp.lua
 source $HOME/.config/nvim/plugins/git_blame.vim
 source $HOME/.config/nvim/plugins/fzf.lua
-
-
-" https://github.com/preservim/tagbar
-nmap <F8> :TagbarToggle<CR>
-" autocmd VimEnter *.py,*.pl,*.js,*.php TagbarToggle
-let g:tagbar_compact = 1
-
+source $HOME/.config/nvim/plugins/tagbar.lua
 
 """Конфиги плагинов."""
 
