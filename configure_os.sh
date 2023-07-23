@@ -1,5 +1,13 @@
 #!/bin/bash
 
+VAULT_PASS_FILE=vault.txt
+
+if [ ! -f $VAULT_PASS_FILE ]; then
+    echo 'Creating file with ansible-vault password. Write pass: '
+    read -s pass
+    echo $pass > $VAULT_PASS_FILE
+fi;
+
 echo -n "Work(1) or home(2): "
 # shellcheck disable=SC2162
 read locality
@@ -15,7 +23,7 @@ cd $CONFIG_DIR && git pull origin master
 
 python3 -m pip install --upgrade --user ansible
 
-ansible-playbook make-common.yaml -i hosts --vault-password-file=vault.txt
+ansible-playbook make-common.yaml -i hosts --vault-password-file=$VAULT_PASS_FILE
 
 if [[ "$locality" == "1" ]]; then
     ansible-playbook make-work.yaml -i hosts
