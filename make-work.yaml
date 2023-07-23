@@ -1,8 +1,8 @@
 ---
 - hosts: 127.0.0.1
   connection: local
-  tasks:
 
+  tasks:
   # Git
   - name: Set default git user name
     community.general.git_config:
