@@ -1,11 +1,19 @@
 #!/bin/bash
 
 VAULT_PASS_FILE=vault.txt
+VARS_FILE=vars2.yaml
 
 if [ ! -f $VAULT_PASS_FILE ]; then
-    echo 'Creating file with ansible-vault password. Write pass: '
+    echo 'Creating file with ansible-vault password. Write pass:'
     read -s pass
     echo $pass > $VAULT_PASS_FILE
+fi;
+
+if [ ! -f $VARS_FILE ]; then
+    echo 'Creating file with ansible encrypted vars. Write became pass:'
+    read -s pass
+    echo "ansible_become_pass: $pass" > $VARS_FILE
+    ansible-vault encrypt $VARS_FILE
 fi;
 
 echo -n "Work(1) or home(2): "
