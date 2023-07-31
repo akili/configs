@@ -205,3 +205,9 @@
   - name: Clear fonts cache
     shell: fc-cache -fv
 
+  - name: Create symlink for bat
+    file:
+      src: /usr/bin/batcat
+      dest: ~/.local/bin/bat
+      state: link
+

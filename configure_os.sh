@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VAULT_PASS_FILE=vault.txt
-VARS_FILE=vars2.yaml
+VARS_FILE=vars.yaml
 
 if [ ! -f $VAULT_PASS_FILE ]; then
     echo 'Creating file with ansible-vault password. Write pass:'
