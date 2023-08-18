@@ -1,5 +1,18 @@
 #!/bin/bash
 
+echo -n "Work(1) or home(2): "
+# shellcheck disable=SC2162
+read locality
+
+sudo apt update
+sudo apt install -y ansible git python3-pip
+
+cd ~ || exit
+
+CONFIG_DIR='configs'
+[ ! -d "$CONFIG_DIR" ] && git clone https://github.com/akili/configs.git $CONFIG_DIR
+cd $CONFIG_DIR && git pull origin master
+
 VAULT_PASS_FILE=vault.txt
 VARS_FILE=vars.yaml
 
@@ -15,19 +28,6 @@ if [ ! -f $VARS_FILE ]; then
     echo "ansible_become_pass: $pass" > $VARS_FILE
     ansible-vault encrypt $VARS_FILE
 fi;
-
-echo -n "Work(1) or home(2): "
-# shellcheck disable=SC2162
-read locality
-
-sudo apt update
-sudo apt install -y ansible git python3-pip
-
-cd ~ || exit
-
-CONFIG_DIR='configs'
-[ ! -d "$CONFIG_DIR" ] && git clone https://github.com/akili/configs.git $CONFIG_DIR
-cd $CONFIG_DIR && git pull origin master
 
 python3 -m pip install --upgrade --user ansible
 
