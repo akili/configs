@@ -171,7 +171,7 @@
 
   - name: Install notion
     become: true
-    shell: snap install notion-snap
+    shell: snap install notion-snap-reborn
 
   - name: Install postman
     become: true
