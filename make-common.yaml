@@ -119,7 +119,7 @@
     lineinfile:
       path: ~/.zshrc
       search_string: 'plugins=(git'
-      line: 'plugins=(git docker-compose command-not-found common-aliases zsh-autosuggestions zsh-syntax-highlighting poetry fzf)'
+      line: 'plugins=(git docker docker-compose command-not-found common-aliases zsh-autosuggestions zsh-syntax-highlighting poetry fzf)'
   - name: Change theme
     lineinfile:
       path: ~/.zshrc
