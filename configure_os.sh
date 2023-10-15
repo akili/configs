@@ -46,3 +46,9 @@ stow vim
 stow nvim
 stow tmux
 
+echo "Installing and configuration is completed. Reboot the system (y/n)?"
+read answer
+if [[ "$answer" == "y" ]]; then
+    sudo reboot now
+fi
+
