@@ -1,0 +1,26 @@
+---
+repos:
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v2.3.0
+      hooks:
+          - id: check-yaml
+          - id: end-of-file-fixer
+          - id: trailing-whitespace
+          - id: detect-private-key
+          - id: debug-statements
+          - id: check-added-large-files
+          - id: check-symlinks
+    - repo: https://github.com/shellcheck-py/shellcheck-py
+      rev: v0.9.0.6
+      hooks:
+          - id: shellcheck
+    - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+      rev: 0.2.3
+      hooks:
+          - id: yamlfmt
+
+     ### Проверки безопасности ###
+    - repo: https://github.com/gitleaks/gitleaks
+      rev: v8.16.1
+      hooks:
+          - id: gitleaks-docker

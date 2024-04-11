@@ -1,221 +1,220 @@
 ---
-- hosts: 127.0.0.1
-  connection: local
-  vars_files:
-    - vars.yaml
+    - hosts: 127.0.0.1
+      connection: local
+      vars_files:
+          - vars.yaml
 
-  tasks:
-  - name: Add repo with Python 3.11
-    become: true
-    apt_repository:
-      repo: ppa:deadsnakes/ppa
-      state: present
+      tasks:
+          - name: Add repo with Python 3.11
+            become: true
+            apt_repository:
+                repo: ppa:deadsnakes/ppa
+                state: present
 
-  - name: Run apt-get update
-    when: apt_update is defined
-    become: true
-    ignore_errors: yes
-    apt:
-      update_cache: yes
-  - name: Install apt packages
-    become: true
-    apt:
-      name: "{{ package }}"
-    vars:
-      package:
-      - git
-      - vim
-      - tmux
-      - bat
-      - htop
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - gnupg-agent
-      - software-properties-common
-      - build-essential
-      - zsh
-      - stow
-      - tig
-      - npm
-      - fzf
-      - exuberant-ctags
-      - keepassxc
-      - telegram-desktop
-      - pwgen
-      - jq
-      - clang
-      - gnome-shell-pomodoro
-      - ripgrep
-      - net-tools
-      - shellcheck
-      - shfmt
-      - fd-find
-      - tidy
-      - python3.11
-  - name: Install ansible collection
-    shell: 'ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto'
+          - name: Run apt-get update
+            when: apt_update is defined
+            become: true
+            ignore_errors: yes
+            apt:
+                update_cache: yes
+          - name: Install apt packages
+            become: true
+            apt:
+                name: '{{ package }}'
+            vars:
+                package:
+                    - git
+                    - vim
+                    - tmux
+                    - bat
+                    - htop
+                    - apt-transport-https
+                    - ca-certificates
+                    - curl
+                    - gnupg-agent
+                    - software-properties-common
+                    - build-essential
+                    - zsh
+                    - stow
+                    - tig
+                    - npm
+                    - fzf
+                    - exuberant-ctags
+                    - keepassxc
+                    - telegram-desktop
+                    - pwgen
+                    - jq
+                    - clang
+                    - gnome-shell-pomodoro
+                    - ripgrep
+                    - net-tools
+                    - shellcheck
+                    - shfmt
+                    - fd-find
+                    - tidy
+                    - python3.11
+          - name: Install ansible collection
+            shell: ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto
 
-  # Configurate repo with this configs
-  - name: Set ssh remote origin url
-    community.general.git_config:
-      scope: local
-      repo: ~/configs
-      name: remote.origin.url
-      value: 'git@github.com:akili/configs.git'
+          # Configurate repo with this configs
+          - name: Set ssh remote origin url
+            community.general.git_config:
+                scope: local
+                repo: ~/configs
+                name: remote.origin.url
+                value: git@github.com:akili/configs.git
 
-  # SSH
-  - name: Create folder for ssh
-    file:
-      path: ~/.ssh
-      state: directory
-  - name: Generate an OpenSSH keypair
-    community.crypto.openssh_keypair:
-      path: ~/.ssh/id_rsa
+          # SSH
+          - name: Create folder for ssh
+            file:
+                path: ~/.ssh
+                state: directory
+          - name: Generate an OpenSSH keypair
+            community.crypto.openssh_keypair:
+                path: ~/.ssh/id_rsa
 
-  # Docker
-  - name: Add apt-key
-    become: true
-    apt_key:
-      url: https://download.docker.com/linux/ubuntu/gpg
-  - name: Add docker repo
-    become: true
-    apt_repository:
-      repo: deb https://download.docker.com/linux/ubuntu focal stable
-  - name: Install docker
-    become: true
-    apt:
-      name:
-        - docker-ce
-        - docker-ce-cli
-        - containerd.io
-      update_cache: yes
-  - name: Add user permissions
-    become: true
-    shell: "usermod -aG docker {{ lookup('env','USER') }}"
-  - name: Install pip packages
-    become: true
-    pip:
-      extra_args: --upgrade
-      name:
-        - docker-compose
-        - poetry
-        - pynvim
-        - ipython
-        - pre-commit
+          # Docker
+          - name: Add apt-key
+            become: true
+            apt_key:
+                url: https://download.docker.com/linux/ubuntu/gpg
+          - name: Add docker repo
+            become: true
+            apt_repository:
+                repo: deb https://download.docker.com/linux/ubuntu focal stable
+          - name: Install docker
+            become: true
+            apt:
+                name:
+                    - docker-ce
+                    - docker-ce-cli
+                    - containerd.io
+                update_cache: yes
+          - name: Add user permissions
+            become: true
+            shell: usermod -aG docker {{ lookup('env','USER') }}
+          - name: Install pip packages
+            become: true
+            pip:
+                extra_args: --upgrade
+                name:
+                    - docker-compose
+                    - poetry
+                    - pynvim
+                    - ipython
+                    - pre-commit
 
-  # zsh
-  - name: Make zsh default shell
-    become: true
-    shell: 'chsh -s /usr/bin/zsh akili'
-  - name: Register oh-my-zsh folder
-    stat:
-      path: "~/.oh-my-zsh"
-    register: ohmyzsh
-  - name: Install oh-my-zsh
-    shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    when: not ohmyzsh.stat.exists
-  - name: Install zsh-syntax-highlightin
-    git:
-      repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-      dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-  - name: Install zsh-autosuggestions
-    git:
-      repo: https://github.com/zsh-users/zsh-autosuggestions
-      dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-  - name: Write down all plugins
-    lineinfile:
-      path: ~/.zshrc
-      search_string: 'plugins=(git'
-      line: 'plugins=(git docker docker-compose command-not-found common-aliases zsh-autosuggestions zsh-syntax-highlighting poetry fzf)'
-  - name: Change theme
-    lineinfile:
-      path: ~/.zshrc
-      search_string: 'ZSH_THEME="robbyrussell"'
-      line: 'ZSH_THEME="agnoster"'
-  - name: Delete host name from prompt
-    blockinfile:
-      path: ~/.zshrc
-      block: |
-        prompt_context() {
-          if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-            prompt_segment black default {% raw %}"%(!.%{%F{yellow}%}.)$USER"{% endraw %} 
-          fi
-        }
+          # zsh
+          - name: Make zsh default shell
+            become: true
+            shell: chsh -s /usr/bin/zsh akili
+          - name: Register oh-my-zsh folder
+            stat:
+                path: ~/.oh-my-zsh
+            register: ohmyzsh
+          - name: Install oh-my-zsh
+            shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+            when: not ohmyzsh.stat.exists
+          - name: Install zsh-syntax-highlightin
+            git:
+                repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+                dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+          - name: Install zsh-autosuggestions
+            git:
+                repo: https://github.com/zsh-users/zsh-autosuggestions
+                dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+          - name: Write down all plugins
+            lineinfile:
+                path: ~/.zshrc
+                search_string: plugins=(git
+                line: plugins=(git docker docker-compose command-not-found common-aliases zsh-autosuggestions zsh-syntax-highlighting poetry fzf)
+          - name: Change theme
+            lineinfile:
+                path: ~/.zshrc
+                search_string: ZSH_THEME="robbyrussell"
+                line: ZSH_THEME="agnoster"
+          - name: Delete host name from prompt
+            blockinfile:
+                path: ~/.zshrc
+                block: |
+                    prompt_context() {
+                      if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+                        prompt_segment black default {% raw %}"%(!.%{%F{yellow}%}.)$USER"{% endraw %}
+                      fi
+                    }
 
-  # tmux
-  - name: Install tmux plugin manager
-    git:
-      repo: 'https://github.com/tmux-plugins/tpm'
-      dest: '~/.tmux/plugins/tpm'
+          # tmux
+          - name: Install tmux plugin manager
+            git:
+                repo: https://github.com/tmux-plugins/tpm
+                dest: ~/.tmux/plugins/tpm
 
-  # neovim
-  - name: Download neovim
-    get_url:
-      url: https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.deb
-      dest: /tmp/
-  - name: Install neovim
-    become: true
-    apt:
-      deb: /tmp/nvim-linux64.deb
-      force: yes
-  - name: Install npm packages
-    become: true
-    npm:
-      name: "{{ item }}"
-      global: true
-    with_items:
-      - pyright
-      - typescript
-      - typescript-language-server
-      - dockerfile-language-server-nodejs
-      - yaml-language-server
-      - bash-language-server
+          # neovim
+          - name: Download neovim
+            get_url:
+                url: https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.deb
+                dest: /tmp/
+          - name: Install neovim
+            become: true
+            apt:
+                deb: /tmp/nvim-linux64.deb
+                force: yes
+          - name: Install npm packages
+            become: true
+            npm:
+                name: '{{ item }}'
+                global: true
+            with_items:
+                - pyright
+                - typescript
+                - typescript-language-server
+                - dockerfile-language-server-nodejs
+                - yaml-language-server
+                - bash-language-server
 
-  - name: Install plugin manager
-    shell: sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  - name: Set nvim default git editor
-    shell: git config --global core.editor nvim
+          - name: Install plugin manager
+            shell: sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+          - name: Set nvim default git editor
+            shell: git config --global core.editor nvim
 
-  - name: Install notion
-    become: true
-    shell: snap install notion-snap-reborn
+          - name: Install notion
+            become: true
+            shell: snap install notion-snap-reborn
 
-  - name: Install postman
-    become: true
-    shell: snap install postman
+          - name: Install postman
+            become: true
+            shell: snap install postman
 
-  - name: Download google chrome
-    become: true
-    get_url:
-      url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-      dest: /tmp/
-  - name: Install google chrome
-    become: true
-    apt:
-      deb: /tmp/google-chrome-stable_current_amd64.deb
+          - name: Download google chrome
+            become: true
+            get_url:
+                url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+                dest: /tmp/
+          - name: Install google chrome
+            become: true
+            apt:
+                deb: /tmp/google-chrome-stable_current_amd64.deb
 
-  - name: Remove dependencies that are no longer required
-    become: true
-    apt:
-      autoremove: yes
+          - name: Remove dependencies that are no longer required
+            become: true
+            apt:
+                autoremove: yes
 
-  # Hack Nerd Fonts
-  - name: Create folder for fonts
-    file:
-      path: ~/.local/share/fonts
-      state: directory
-  - name: Download fonts
-    unarchive:
-      src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip
-      dest: ~/.local/share/fonts
-      remote_src: yes
-  - name: Clear fonts cache
-    shell: fc-cache -fv
+          # Hack Nerd Fonts
+          - name: Create folder for fonts
+            file:
+                path: ~/.local/share/fonts
+                state: directory
+          - name: Download fonts
+            unarchive:
+                src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip
+                dest: ~/.local/share/fonts
+                remote_src: yes
+          - name: Clear fonts cache
+            shell: fc-cache -fv
 
-  - name: Create symlink for bat
-    file:
-      src: /usr/bin/batcat
-      dest: ~/.local/bin/bat
-      state: link
-
+          - name: Create symlink for bat
+            file:
+                src: /usr/bin/batcat
+                dest: ~/.local/bin/bat
+                state: link

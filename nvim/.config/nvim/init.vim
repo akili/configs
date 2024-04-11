@@ -376,4 +376,3 @@ map <C-W>J :YodeLayoutShiftWinBottom<CR>
 map <C-W>K :YodeLayoutShiftWinTop<CR>
 " at the moment this is needed to have no gap for floating windows
 set showtabline=2
-

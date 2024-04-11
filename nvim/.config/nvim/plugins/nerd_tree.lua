@@ -7,4 +7,3 @@ vim.g.NERDTreeShowHidden = 1
 
 -- https://github.com/Xuyuanp/nerdtree-git-plugin
 vim.g.NERDTreeGitStatusUseNerdFonts = 1
-
