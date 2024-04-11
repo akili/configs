@@ -3,7 +3,7 @@
       connection: local
 
       tasks:
-  # Git
+          # Git
           - name: Set default git user name
             community.general.git_config:
                 name: user.name
@@ -15,7 +15,7 @@
                 scope: global
                 value: anton.sedov@webpp.ru
 
-  # Configurate repo with this configs
+          # Configurate repo with this configs
           - name: Set default git user name for configs folder
             community.general.git_config:
                 scope: local

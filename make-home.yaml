@@ -3,7 +3,7 @@
       connection: local
 
       tasks:
-  # Git
+          # Git
           - name: Set default git user name
             community.general.git_config:
                 name: user.name
