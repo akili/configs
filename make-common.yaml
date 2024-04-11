@@ -102,6 +102,7 @@
         - poetry
         - pynvim
         - ipython
+        - pre-commit
 
   # zsh
   - name: Make zsh default shell
