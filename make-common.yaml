@@ -185,6 +185,11 @@
             become: true
             shell: snap install postman
 
+          # https://github.com/Y2Z/monolith
+          - name: Install Monolith
+            became: true
+            shell: snap install monolith
+
           - name: Download google chrome
             become: true
             get_url:
