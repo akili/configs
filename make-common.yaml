@@ -5,7 +5,7 @@
           - vars.yaml
 
       tasks:
-          - name: Add repo with Python 3.11
+          - name: Add repo with the latest Python
             become: true
             apt_repository:
                 repo: ppa:deadsnakes/ppa
@@ -52,7 +52,8 @@
                     - shfmt
                     - fd-find
                     - tidy
-                    - python3.11
+                    - python3.12
+                    - python3.13
           - name: Install ansible collection
             shell: ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto
 
