@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Prompt for the locality
-read -rp "Work(1) or home(2): " locality
+read -p "Work(1) or home(2): " -r locality
 
 # Update package list and install necessary packages
 sudo apt update
@@ -23,17 +23,17 @@ fi
 VAULT_PASS_FILE=vault.txt
 VARS_FILE=vars.yaml
 
-if [ ! -f $VAULT_PASS_FILE ]; then
-    read -sr 'Creating file with ansible-vault password. Write pass: ' pass
+ if [ ! -f $VAULT_PASS_FILE ]; then
+    read -p 'Creating file with ansible-vault password. Write pass:' -sr pass
     echo "$pass" > $VAULT_PASS_FILE
     echo
 fi;
 
 if [ ! -f $VARS_FILE ]; then
-    read -sr 'Creating file with ansible encrypted vars. Write became pass: ' pass
+    read -p 'Creating file with ansible encrypted vars. Write became pass:' -sr pass
     echo "ansible_become_pass: $pass" > $VARS_FILE
-    ansible-vault encrypt $VARS_FILE
     echo
+    ansible-vault encrypt $VARS_FILE
 fi;
 
 # Upgrade Ansible
@@ -62,7 +62,7 @@ stow vim
 stow nvim
 stow tmux
 
-read -rp "Installation and configuration are completed. Reboot the system (y/n)?" answer
+read -p "Installation and configuration are completed. Reboot the system (y/n)?" -r answer
 if [[ "$answer" == "y" ]]; then
     sudo reboot now
 fi
