@@ -14,10 +14,9 @@ cd ~ || exit
 CONFIG_DIR="$HOME/configs"
 if [ ! -d "$CONFIG_DIR" ]; then
     git clone https://github.com/akili/configs.git "$CONFIG_DIR"
-else
-    cd "$CONFIG_DIR" || exit
-    git pull origin master
 fi
+cd "$CONFIG_DIR" || exit
+git pull origin master
 
 # Define paths for Ansible files
 VAULT_PASS_FILE=vault.txt
