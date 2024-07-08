@@ -10,13 +10,17 @@
             apt_repository:
                 repo: ppa:deadsnakes/ppa
                 state: present
-
           - name: Run apt-get update
             when: apt_update is defined
             become: true
             ignore_errors: yes
             apt:
                 update_cache: yes
+          - name: Update all packages to their latest version
+            become: true
+            apt:
+                name: '*'
+                state: latest
           - name: Install apt packages
             become: true
             apt:
