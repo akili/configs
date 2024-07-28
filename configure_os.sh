@@ -39,15 +39,15 @@ fi;
 python3 -m pip install --upgrade --user ansible
 
 # Run Ansible playbooks
-ansible-playbook make-common.yaml -i hosts --vault-password-file=$VAULT_PASS_FILE
+ansible-playbook make-common.yaml -i hosts --vault-password-file=$VAULT_PASS_FILE --user $USER
 
 case "$locality" in
     "1")
-        ansible-playbook make-work.yaml -i hosts
+        ansible-playbook make-work.yaml -i hosts --user $USER
         echo "Work apps configurated"
         ;;
     "2")
-        ansible-playbook make-home.yaml -i hosts
+        ansible-playbook make-home.yaml -i hosts --user $USER
         echo "Home apps configurated"
         ;;
     *)
