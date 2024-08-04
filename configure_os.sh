@@ -39,7 +39,7 @@ fi;
 python3 -m pip install --upgrade --user ansible
 
 # Run Ansible playbooks
-ansible-playbook make-common.yaml -i hosts --vault-password-file=$VAULT_PASS_FILE --user $USER --no-warn-script-location
+ansible-playbook make-common.yaml -i hosts --vault-password-file=$VAULT_PASS_FILE --user $USER
 
 case "$locality" in
     "1")
