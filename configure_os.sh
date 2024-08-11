@@ -60,7 +60,8 @@ stow vim
 stow nvim
 stow tmux
 
-read -p "Installation and configuration are completed. Reboot the system (y/n)? " -r answer
+answer="y"
+read -p "Installation and configuration are completed. Reboot the system (Y/n)? " -r $answer
 if [[ "$answer" == "y" ]]; then
     sudo reboot now
 fi
