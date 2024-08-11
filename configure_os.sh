@@ -51,8 +51,7 @@ case "$locality" in
         echo "Home apps configurated"
         ;;
     *)
-        echo "Invalid option. Exiting."
-        exit 1
+        echo "Invalid option. Apps wasn't installed."
         ;;
 esac
 
