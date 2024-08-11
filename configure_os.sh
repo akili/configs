@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # Prompt for the locality
-read -p "Work(1) or home(2): " -r locality
+locality="h"
+read -p "Work or home(default) [w/h]: " -r $locality
 
 # Update package list and install necessary packages
 sudo apt update
