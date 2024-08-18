@@ -16,7 +16,7 @@
             ignore_errors: yes
             apt:
                 update_cache: yes
-          - name: Update all packages to their latest version
+          - name: Upgrade all packages to their latest version
             become: true
             apt:
                 name: '*'
@@ -144,7 +144,7 @@
                 block: |
                     prompt_context() {
                       if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-                        prompt_segment black default {% raw %}"%(!.%{%F{yellow}%}.)$USER"{% endraw %} 
+                        prompt_segment black default {% raw %}"%(!.%{%F{yellow}%}.)$USER"{% endraw %}
                       fi
                     }
 

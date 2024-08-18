@@ -2,7 +2,7 @@
 
 # Prompt for the locality
 locality="h"
-read -p "Work or home(default) [w/h]: " -r "${locality?}"
+read -p "Work or home [w/H]: " -r "${locality?}"
 
 # Update package list and install necessary packages
 sudo apt update
