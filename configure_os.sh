@@ -2,7 +2,8 @@
 
 # Prompt for the locality
 locality="h"
-read -p "Work or home [w/H]: " -r "${locality?}"
+read -p "Work or home [w/H]: " -r answer
+locality=${answer:-$locality}
 
 # Update package list and install necessary packages
 sudo apt update
@@ -61,8 +62,9 @@ stow vim
 stow nvim
 stow tmux
 
-answer="y"
-read -p "Installation and configuration are completed. Reboot the system (Y/n)? " -r "${answer?}"
+default_answer="y"
+read -p "Installation and configuration are completed. Reboot the system (Y/n)? " -r answer
+answer=${answer:-$default_answer}
 if [[ "$answer" == "y" ]]; then
     sudo reboot now
 fi
