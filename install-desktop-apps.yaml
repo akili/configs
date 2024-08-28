@@ -1,0 +1,39 @@
+---
+    - hosts: 127.0.0.1
+      connection: local
+      vars_files:
+          - vars.yaml
+
+      tasks:
+          - name: Install apt packages
+            become: true
+            apt:
+                name: '{{ package }}'
+            vars:
+                package:
+                    - keepassxc
+                    - telegram-desktop
+
+          - name: Install notion
+            become: true
+            shell: snap install notion-snap-reborn
+
+          - name: Install postman
+            become: true
+            shell: snap install postman
+
+          # https://github.com/Y2Z/monolith
+          - name: Install Monolith
+            become: true
+            shell: snap install monolith
+
+          # Google Chrome
+          - name: Download Google Chrome
+            become: true
+            get_url:
+                url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+                dest: /tmp/
+          - name: Install Google Chrome
+            become: true
+            apt:
+                deb: /tmp/google-chrome-stable_current_amd64.deb

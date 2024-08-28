@@ -5,6 +5,11 @@ locality="h"
 read -p "Work or home [w/H]: " -r answer
 locality=${answer:-$locality}
 
+# Prompt for the system host
+desktop="n"
+read -p "Is it desktop? [y/N]: " -r answer
+desktop=${answer:-$desktop}
+
 # Update package list and install necessary packages
 sudo apt update
 sudo apt install -y ansible git python3-pip
@@ -56,6 +61,10 @@ case "$locality" in
         echo "Invalid option. Locality wasn't configured."
         ;;
 esac
+
+if [[ "$desktop" == "y" ]]; then
+        ansible-playbook install-desktop-apps.yaml -i hosts --vault-password-file=$VAULT_PASS_FILE --user "$USER"
+fi;
 
 # Use stow to manage dotfiles
 stow vim
