@@ -14,9 +14,12 @@
                     - keepassxc
                     - telegram-desktop
 
-          - name: Install notion
-            become: true
-            shell: snap install notion-snap-reborn
+          - name: Install from snap
+            snap:
+                name:
+                    - obsidian
+                state: present
+                classic: true
 
           - name: Install postman
             become: true
