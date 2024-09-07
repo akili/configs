@@ -14,21 +14,21 @@
                     - keepassxc
                     - telegram-desktop
 
-          - name: Install from snap
+          - name: Install obsidian
             snap:
-                name:
-                    - obsidian
+                name: obsidian
                 state: present
                 classic: true
 
-          - name: Install postman
+          - name: Install from snap
             become: true
-            shell: snap install postman
-
-          # https://github.com/Y2Z/monolith
-          - name: Install Monolith
-            become: true
-            shell: snap install monolith
+            snap:
+                name: '{{ package }}'
+                state: present
+            vars:
+                package:
+                    - postman
+                    - monolith # https://github.com/Y2Z/monolith
 
           # Google Chrome
           - name: Download Google Chrome
