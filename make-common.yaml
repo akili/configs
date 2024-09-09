@@ -90,6 +90,8 @@
           - name: Add user permissions
             become: true
             shell: usermod -aG docker {{ lookup('env','USER') }}
+
+          # Pip
           - name: Install pip packages
             become: true
             pip:
@@ -156,7 +158,7 @@
           # neovim
           - name: Download neovim
             get_url:
-                url: https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.deb
+                url: https://github.com/neovim/neovim-releases/releases/download/stable/nvim-linux64.deb
                 dest: /tmp/
           - name: Install neovim
             become: true
