@@ -98,7 +98,6 @@
                 extra_args: --upgrade
                 name:
                     - docker-compose
-                    - poetry
                     - pynvim
                     - ipython
                     - pre-commit
