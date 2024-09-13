@@ -327,8 +327,7 @@ require'nvim-treesitter.configs'.setup({
                 ['[]'] = '@class.outer'
             }
         }
-    },
-    context_commentstring = {enable = true}
+    }
 })
 
 -- https://github.com/nvim-treesitter/nvim-treesitter-context
