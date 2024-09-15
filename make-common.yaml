@@ -99,17 +99,12 @@
                 name:
                     - docker-compose
                     - pynvim
+                    - pre-commit
                     - pipx
 
           # Pipx
           - name: Ensurepath
             shell: pipx ensurepath
-          - name: Install packages with pipx
-            community.general.pipx:
-                name: '{{ item }}'
-            loop:
-                - ipython
-                - pre-commit
 
           # zsh
           - name: Make zsh default shell
