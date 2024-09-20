@@ -1,7 +1,6 @@
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     " Visual
-    Plug 'scottmckendry/cyberdream.nvim'  " https://github.com/scottmckendry/cyberdream.nvim
-    "Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+    Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
     "Plug 'lifepillar/vim-solarized8', { 'dir': '~/.config/nvim/colors/solarized8' }
 
     Plug 'majutsushi/tagbar'
