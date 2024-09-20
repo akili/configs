@@ -3,7 +3,7 @@
 let mapleader = " "
 
 set termguicolors
-colorscheme solarized8_high
+colorscheme cyberdream
 hi Normal guibg=NONE ctermbg=NONE " transparent background
 
 filetype plugin indent on   " allow auto-indenting depending on file type
