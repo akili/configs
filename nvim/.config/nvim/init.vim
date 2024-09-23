@@ -1,7 +1,7 @@
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     " Visual
-    Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-    "Plug 'lifepillar/vim-solarized8', { 'dir': '~/.config/nvim/colors/solarized8' }
+    Plug 'navarasu/onedark.nvim'
+
 
     Plug 'majutsushi/tagbar'
     Plug 'preservim/nerdtree'
@@ -46,6 +46,9 @@ let g:loaded_ruby_provider = 0
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/hotkeys.vim
 source $HOME/.config/nvim/general/hotkeys.lua
+
+" Visual plugins
+source $HOME/.config/nvim/visual/theme.lua
 
 " plugins setings
 source $HOME/.config/nvim/plugins/nerd_tree.lua
