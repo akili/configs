@@ -48,7 +48,7 @@ source $HOME/.config/nvim/general/hotkeys.vim
 source $HOME/.config/nvim/general/hotkeys.lua
 
 " Visual plugins
-source $HOME/.config/nvim/visual/theme.lua
+source $HOME/.config/nvim/plugins/visual/theme.lua
 
 " plugins setings
 source $HOME/.config/nvim/plugins/nerd_tree.lua
