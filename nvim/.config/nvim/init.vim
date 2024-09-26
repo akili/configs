@@ -53,6 +53,7 @@ source $HOME/.config/nvim/plugins/visual/theme.lua
 
 " Codding helpers
 source $HOME/.config/nvim/plugins/code/nvim-cmp.lua
+source $HOME/.config/nvim/plugins/code/lspconfig.lua
 
 " plugins setings
 source $HOME/.config/nvim/plugins/nerd_tree.lua
