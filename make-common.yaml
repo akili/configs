@@ -49,6 +49,7 @@
                     - shfmt
                     - fd-find
                     - tidy
+                    - python3.10-venv
                     - python3.12
                     - python3.13
           - name: Install ansible collection
