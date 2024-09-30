@@ -5,11 +5,11 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     " Code
     Plug 'hrsh7th/nvim-cmp'
     Plug 'neovim/nvim-lspconfig'
+    Plug 'majutsushi/tagbar'
 
     " Nvim improvements
     Plug 'Pocco81/auto-save.nvim'
 
-    Plug 'majutsushi/tagbar'
     Plug 'preservim/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'vim-airline/vim-airline'
@@ -56,6 +56,7 @@ source $HOME/.config/nvim/plugins/visual/theme.lua
 " Codding helpers
 source $HOME/.config/nvim/plugins/code/nvim-cmp.lua
 source $HOME/.config/nvim/plugins/code/lspconfig.lua
+source $HOME/.config/nvim/plugins/code/tagbar.lua
 
 " Nvim improvements
 source $HOME/.config/nvim/plugins/nvim/auto_save.lua
@@ -67,7 +68,6 @@ source $HOME/.config/nvim/plugins/quickscope.vim
 source $HOME/.config/nvim/plugins/toggle_lsp.lua
 source $HOME/.config/nvim/plugins/git_blame.vim
 source $HOME/.config/nvim/plugins/fzf.lua
-source $HOME/.config/nvim/plugins/tagbar.lua
 
 """Конфиги плагинов."""
 
