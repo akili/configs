@@ -178,7 +178,6 @@
             with_items:
                 - pyright
                 - typescript
-                - typescript-language-server
                 - dockerfile-language-server-nodejs
                 - yaml-language-server
                 - bash-language-server
