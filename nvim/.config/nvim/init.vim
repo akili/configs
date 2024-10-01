@@ -9,6 +9,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
     " Nvim improvements
     Plug 'Pocco81/auto-save.nvim'
+    Plug 'folke/zen-mode.nvim'
 
     Plug 'preservim/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -23,7 +24,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
     Plug 'nvim-treesitter/nvim-treesitter-context'
     Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-    Plug 'folke/zen-mode.nvim'
     Plug 'hoschi/yode-nvim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'ryanoasis/vim-devicons'
@@ -59,6 +59,7 @@ source $HOME/.config/nvim/plugins/code/tagbar.lua
 
 " Nvim improvements
 source $HOME/.config/nvim/plugins/nvim/auto_save.lua
+source $HOME/.config/nvim/plugins/nvim/zen_mode.lua
 
 " plugins setings
 source $HOME/.config/nvim/plugins/nerd_tree.lua
@@ -205,16 +206,7 @@ require'treesitter-context'.setup({
     separator = '-',
 })
 
--- https://github.com/folke/zen-mode.nvim
-require("zen-mode").setup({
-    window = {
-        backdrop = 0.8,
-        widht = 120,
-    }
-})
 EOF
-
-nnoremap <A-z> <cmd>ZenMode<cr>
 
 " https://github.com/rhysd/git-messenger.vim
 nnoremap <C-g> :GitMessenger<CR>
