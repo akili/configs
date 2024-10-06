@@ -205,6 +205,3 @@ require'treesitter-context'.setup({
 })
 
 EOF
-
-" https://github.com/rhysd/git-messenger.vim
-nnoremap <C-g> :GitMessenger<CR>
