@@ -6,6 +6,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'hrsh7th/nvim-cmp'
     Plug 'neovim/nvim-lspconfig'
     Plug 'majutsushi/tagbar'
+    Plug 'hoschi/yode-nvim'
 
     " Nvim improvements
     Plug 'Pocco81/auto-save.nvim'
@@ -24,7 +25,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
     Plug 'nvim-treesitter/nvim-treesitter-context'
     Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-    Plug 'hoschi/yode-nvim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'ryanoasis/vim-devicons'
     Plug 'unblevable/quick-scope'
@@ -56,6 +56,7 @@ source $HOME/.config/nvim/plugins/visual/theme.lua
 source $HOME/.config/nvim/plugins/code/nvim-cmp.lua
 source $HOME/.config/nvim/plugins/code/lspconfig.lua
 source $HOME/.config/nvim/plugins/code/tagbar.lua
+source $HOME/.config/nvim/plugins/code/yode-nvim.vim
 
 " Nvim improvements
 source $HOME/.config/nvim/plugins/nvim/auto_save.lua
@@ -149,6 +150,7 @@ nnoremap <silent> <Leader>bd :Bclose<CR>
 " Telescope settings
 nnoremap ,f <cmd>Telescope find_files<cr>
 nnoremap ,g <cmd>Telescope live_grep<cr>
+
 " Telescope fzf plugin
 lua << EOF
 require('telescope').load_extension('fzf')
@@ -206,17 +208,3 @@ EOF
 
 " https://github.com/rhysd/git-messenger.vim
 nnoremap <C-g> :GitMessenger<CR>
-
-" https://github.com/hoschi/yode-nvim
-lua require('yode-nvim').setup({})
-map <Leader>yc :YodeCreateSeditorFloating<CR>
-map <Leader>yr :YodeCreateSeditorReplace<CR>
-nmap <Leader>bd :YodeBufferDelete<cr>
-imap <Leader>bd <esc>:YodeBufferDelete<cr>
-" these commands fall back to overwritten keys when cursor is in split window
-map <C-W>r :YodeLayoutShiftWinDown<CR>
-map <C-W>R :YodeLayoutShiftWinUp<CR>
-map <C-W>J :YodeLayoutShiftWinBottom<CR>
-map <C-W>K :YodeLayoutShiftWinTop<CR>
-" at the moment this is needed to have no gap for floating windows
-set showtabline=2
