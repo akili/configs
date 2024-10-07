@@ -7,13 +7,23 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'neovim/nvim-lspconfig'
     Plug 'majutsushi/tagbar'
     Plug 'hoschi/yode-nvim'
+    Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+    Plug 'jiangmiao/auto-pairs'
 
     " Nvim improvements
     Plug 'Pocco81/auto-save.nvim'
     Plug 'folke/zen-mode.nvim'
+    Plug 'justinmk/vim-sneak'
+
+    " Git
+    Plug 'rhysd/git-messenger.vim'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'tpope/vim-fugitive'
+    Plug 'junegunn/gv.vim'
+    Plug 'f-person/git-blame.nvim'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
 
     Plug 'preservim/nerdtree'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'vim-airline/vim-airline'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'saadparwaiz1/cmp_luasnip'
@@ -24,21 +34,11 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
     Plug 'nvim-treesitter/nvim-treesitter-context'
-    Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-    Plug 'jiangmiao/auto-pairs'
     Plug 'ryanoasis/vim-devicons'
     Plug 'unblevable/quick-scope'
     Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
-    Plug 'justinmk/vim-sneak'
     Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
     Plug 'nvim-tree/nvim-web-devicons'
-
-    " Git
-    Plug 'rhysd/git-messenger.vim'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'tpope/vim-fugitive'
-    Plug 'junegunn/gv.vim'
-    Plug 'f-person/git-blame.nvim'
 call plug#end()
 
 let g:loaded_node_provider = 0
@@ -146,7 +146,6 @@ command! -bang -complete=buffer -nargs=? Bclose call <SID>Bclose(<q-bang>, <q-ar
 nnoremap <silent> <Leader>bd :Bclose<CR>
 
 
-
 " Telescope settings
 nnoremap ,f <cmd>Telescope find_files<cr>
 nnoremap ,g <cmd>Telescope live_grep<cr>
@@ -155,7 +154,6 @@ nnoremap ,g <cmd>Telescope live_grep<cr>
 lua << EOF
 require('telescope').load_extension('fzf')
 EOF
-
 
 " Treesitter
 lua << EOF
