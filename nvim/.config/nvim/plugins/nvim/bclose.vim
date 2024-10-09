@@ -72,4 +72,4 @@ command! -bang -complete=buffer -nargs=? Bclose call <SID>Bclose(<q-bang>, <q-ar
 
 " Close tab
 nnoremap <silent> <Leader>bd :Bclose<CR>
-noremap <A-w> :bd<CR>  " My personal hotkey 
+noremap <A-w> :bd<CR>  " My personal hotkey
