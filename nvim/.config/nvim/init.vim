@@ -26,6 +26,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'junegunn/gv.vim'
     Plug 'f-person/git-blame.nvim'
     Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'unblevable/quick-scope'
 
     " LSP
     Plug 'hrsh7th/cmp-nvim-lsp'
@@ -34,17 +35,12 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
     Plug 'nvim-treesitter/nvim-treesitter-context'
-    Plug 'unblevable/quick-scope'
-    Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
     Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 call plug#end()
-
-let g:loaded_node_provider = 0
-let g:loaded_perl_provider = 0
-let g:loaded_ruby_provider = 0
 
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/hotkeys.vim

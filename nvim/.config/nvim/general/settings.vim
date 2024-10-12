@@ -40,3 +40,7 @@ set formatoptions-=cro      " Stop newline continution of comments
 " open new split panes to right and below
 set splitright
 set splitbelow
+
+let g:loaded_node_provider = 0
+let g:loaded_perl_provider = 0
+let g:loaded_ruby_provider = 0
