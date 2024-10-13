@@ -1,10 +1,10 @@
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
-    " Visual
+    " ---Visual---
     Plug 'navarasu/onedark.nvim'
     Plug 'vim-airline/vim-airline'
     Plug 'ryanoasis/vim-devicons'
 
-    " Code
+    " ---Code---
     Plug 'hrsh7th/nvim-cmp'
     Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'neovim/nvim-lspconfig'
@@ -12,13 +12,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'hoschi/yode-nvim'
     Plug 'JoosepAlviste/nvim-ts-context-commentstring'
     Plug 'jiangmiao/auto-pairs'
-
-    " Nvim improvements
-    Plug 'Pocco81/auto-save.nvim'
-    Plug 'folke/zen-mode.nvim'
-    Plug 'justinmk/vim-sneak'
-    Plug 'preservim/nerdtree'
-
     " Git
     Plug 'rhysd/git-messenger.vim'
     Plug 'airblade/vim-gitgutter'
@@ -28,17 +21,22 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'unblevable/quick-scope'
 
+    " ---Nvim improvements---
+    Plug 'Pocco81/auto-save.nvim'
+    Plug 'folke/zen-mode.nvim'
+    Plug 'justinmk/vim-sneak'
+    Plug 'preservim/nerdtree'
+
     " LSP
     Plug 'hrsh7th/cmp-nvim-lsp'
-
     Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
     Plug 'nvim-treesitter/nvim-treesitter-context'
+    Plug 'nvim-lua/plenary.nvim' " telescope dep
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' } " treesitter dep
+    Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
     Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 call plug#end()
 
@@ -69,15 +67,6 @@ source $HOME/.config/nvim/plugins/git_blame.vim
 source $HOME/.config/nvim/plugins/fzf.lua
 
 """Конфиги плагинов."""
-
-" Telescope settings
-nnoremap ,f <cmd>Telescope find_files<cr>
-nnoremap ,g <cmd>Telescope live_grep<cr>
-
-" Telescope fzf plugin
-lua << EOF
-require('telescope').load_extension('fzf')
-EOF
 
 " Treesitter
 lua << EOF
