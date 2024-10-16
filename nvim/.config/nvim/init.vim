@@ -12,6 +12,17 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'hoschi/yode-nvim'
     Plug 'JoosepAlviste/nvim-ts-context-commentstring'
     Plug 'jiangmiao/auto-pairs'
+    " Treesitter
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+    Plug 'nvim-treesitter/nvim-treesitter-context'
+    Plug 'nvim-lua/plenary.nvim' " telescope dep
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' } " treesitter dep
+    Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
+    Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+    " LSP
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
     " Git
     Plug 'rhysd/git-messenger.vim'
     Plug 'airblade/vim-gitgutter'
@@ -26,20 +37,9 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'folke/zen-mode.nvim'
     Plug 'justinmk/vim-sneak'
     Plug 'preservim/nerdtree'
-
-    " LSP
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
-
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-    Plug 'nvim-treesitter/nvim-treesitter-context'
-    Plug 'nvim-lua/plenary.nvim' " telescope dep
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' } " treesitter dep
-    Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
-    Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 call plug#end()
 
+" General settings, hotkeys from small plugins
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/hotkeys.vim
 source $HOME/.config/nvim/general/hotkeys.lua
@@ -52,6 +52,7 @@ source $HOME/.config/nvim/plugins/code/nvim-cmp.lua
 source $HOME/.config/nvim/plugins/code/lspconfig.lua
 source $HOME/.config/nvim/plugins/code/tagbar.lua
 source $HOME/.config/nvim/plugins/code/yode-nvim.vim
+source $HOME/.config/nvim/plugins/code/treesitter.lua
 
 " Nvim improvements
 source $HOME/.config/nvim/plugins/nvim/auto_save.lua
@@ -65,54 +66,3 @@ source $HOME/.config/nvim/plugins/quickscope.vim
 source $HOME/.config/nvim/plugins/toggle_lsp.lua
 source $HOME/.config/nvim/plugins/git_blame.vim
 source $HOME/.config/nvim/plugins/fzf.lua
-
-"""Конфиги плагинов."""
-
-" Treesitter
-lua << EOF
-require'nvim-treesitter.install'.compilers = { 'clang' }
-
-require'nvim-treesitter.configs'.setup({
-    textobjects = {
-        move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-                [']m'] = '@function.outer',
-                [']]'] = '@class.outer'
-            },
-            goto_next_end = {
-                [']M'] = '@function.outer',
-                [']['] = '@class.outer'
-            },
-            goto_previous_start = {
-                ['[m'] = '@function.outer',
-                ['[['] = '@class.outer'
-            },
-            goto_previous_end = {
-                ['[M'] = '@function.outer',
-                ['[]'] = '@class.outer'
-            }
-        }
-    }
-})
-
--- https://github.com/nvim-treesitter/nvim-treesitter-context
-require'treesitter-context'.setup({
-    enable = true,
-    max_lines = 0,
-    trim_scope = 'outer',
-    patterns = {
-        default = {
-            'class',
-            'function',
-            'method',
-        },
-    },
-    exact_patterns = {},
-    zindex = 20,
-    mode = 'cursor',
-    separator = '-',
-})
-
-EOF
