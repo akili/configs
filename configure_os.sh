@@ -12,7 +12,7 @@ locality=${answer:-$locality}
 
 # Prompt for the system host
 desktop="n"
-read -p "Is it desktop? [y/N]: " -r answer
+read -p "Is it a desktop? [y/N]: " -r answer
 desktop=${answer:-$desktop}
 
 # Update package list and install necessary packages
@@ -63,7 +63,7 @@ case "$locality" in
         echo "Home apps configurated"
         ;;
     *)
-        echo -e "${BOLD_RED}ERROR! ${RED}Invalid option. Locality wasn't configured."
+        echo -e "${BOLD_RED}ERROR!${RED} Invalid option. Locality wasn't configured."
         ;;
 esac
 
