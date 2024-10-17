@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+set -eo pipefail
+
+BOLD_RED='\033[1;31m'
+RED='\033[0;31m'
+
 # Prompt for the locality
 locality="h"
 read -p "Work or home [w/H]: " -r answer
@@ -58,7 +63,7 @@ case "$locality" in
         echo "Home apps configurated"
         ;;
     *)
-        echo "Invalid option. Locality wasn't configured."
+        echo -e "${BOLD_RED}ERROR! ${RED}Invalid option. Locality wasn't configured."
         ;;
 esac
 
