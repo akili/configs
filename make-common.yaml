@@ -108,6 +108,15 @@
           - name: Ensurepath
             shell: pipx ensurepath
 
+          - name: Install multiple packages with pipx
+            vars:
+              pipx_packages:
+              - pyright
+            community.general.pipx:
+              name: "{{ item }}"
+              state: latest
+            with_items: "{{ pipx_packages }}"
+
           # zsh
           - name: Make zsh default shell
             become: true
@@ -176,7 +185,6 @@
                 name: '{{ item }}'
                 global: true
             with_items:
-                - pyright
                 - typescript
                 - dockerfile-language-server-nodejs
                 - yaml-language-server
