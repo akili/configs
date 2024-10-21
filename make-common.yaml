@@ -110,12 +110,12 @@
 
           - name: Install multiple packages with pipx
             vars:
-              pipx_packages:
-              - pyright
+                pipx_packages:
+                    - pyright
             community.general.pipx:
-              name: "{{ item }}"
-              state: latest
-            with_items: "{{ pipx_packages }}"
+                name: '{{ item }}'
+                state: latest
+            with_items: '{{ pipx_packages }}'
 
           # zsh
           - name: Make zsh default shell
