@@ -1,4 +1,3 @@
-
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -36,3 +35,8 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+--- Mason config
+require("mason").setup {}
+require("mason-lspconfig").setup { ensure_installed = { "pyright", }, }
+require 'lspconfig'.pyright.setup {}

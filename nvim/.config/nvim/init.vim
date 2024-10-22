@@ -7,7 +7,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     " ---Code---
     Plug 'hrsh7th/nvim-cmp'
     Plug 'saadparwaiz1/cmp_luasnip'
-    Plug 'neovim/nvim-lspconfig'
     Plug 'majutsushi/tagbar'
     Plug 'hoschi/yode-nvim'
     Plug 'JoosepAlviste/nvim-ts-context-commentstring'
@@ -21,8 +20,12 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' } " treesitter dep
     Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
     " LSP
+    Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
+    Plug 'williamboman/mason.nvim'
+    Plug 'williamboman/mason-lspconfig.nvim'
+
     " Git
     Plug 'rhysd/git-messenger.vim'
     Plug 'airblade/vim-gitgutter'
@@ -50,7 +53,7 @@ source $HOME/.config/nvim/plugins/airline.vim
 
 " Codding helpers
 source $HOME/.config/nvim/plugins/code/nvim-cmp.lua
-source $HOME/.config/nvim/plugins/code/lspconfig.lua
+source $HOME/.config/nvim/plugins/code/lsp.lua
 source $HOME/.config/nvim/plugins/code/tagbar.lua
 source $HOME/.config/nvim/plugins/code/yode-nvim.vim
 source $HOME/.config/nvim/plugins/code/treesitter.lua
