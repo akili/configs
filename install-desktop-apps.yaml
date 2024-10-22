@@ -12,7 +12,6 @@
             vars:
                 package:
                     - keepassxc
-                    - telegram-desktop
 
           - name: Install obsidian
             snap:
@@ -29,6 +28,8 @@
                 package:
                     - postman
                     - monolith # https://github.com/Y2Z/monolith
+                    - telegram-desktop
+
 
           # Google Chrome
           - name: Download Google Chrome
