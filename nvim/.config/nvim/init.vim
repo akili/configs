@@ -25,7 +25,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
     Plug 'williamboman/mason.nvim'
     Plug 'williamboman/mason-lspconfig.nvim'
-
     " Git
     Plug 'rhysd/git-messenger.vim'
     Plug 'airblade/vim-gitgutter'
@@ -58,6 +57,8 @@ source $HOME/.config/nvim/plugins/code/tagbar.lua
 source $HOME/.config/nvim/plugins/code/yode-nvim.vim
 source $HOME/.config/nvim/plugins/code/treesitter.lua
 source $HOME/.config/nvim/plugins/toggle_lsp.lua
+" Git
+source $HOME/.config/nvim/plugins/git_blame.vim
 
 " Nvim improvements
 source $HOME/.config/nvim/plugins/nvim/auto_save.lua
@@ -66,6 +67,3 @@ source $HOME/.config/nvim/plugins/nvim/bclose.vim
 source $HOME/.config/nvim/plugins/nvim/nerd_tree.lua
 source $HOME/.config/nvim/plugins/quickscope.vim
 source $HOME/.config/nvim/plugins/fzf.lua
-
-" Git
-source $HOME/.config/nvim/plugins/git_blame.vim

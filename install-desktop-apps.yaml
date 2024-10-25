@@ -1,43 +1,43 @@
 ---
-    - hosts: 127.0.0.1
-      connection: local
-      vars_files:
-          - vars.yaml
+- hosts: 127.0.0.1
+  connection: local
+  vars_files:
+  - vars.yaml
 
-      tasks:
-          - name: Install apt packages
-            become: true
-            apt:
-                name: '{{ package }}'
-            vars:
-                package:
-                    - keepassxc
+  tasks:
+  - name: Install apt packages
+    become: true
+    apt:
+      name: '{{ package }}'
+    vars:
+      package:
+      - keepassxc
 
-          - name: Install obsidian
-            snap:
-                name: obsidian
-                state: present
-                classic: true
+  - name: Install obsidian
+    snap:
+      name: obsidian
+      state: present
+      classic: true
 
-          - name: Install from snap
-            become: true
-            snap:
-                name: '{{ package }}'
-                state: present
-            vars:
-                package:
-                    - postman
-                    - monolith # https://github.com/Y2Z/monolith
-                    - telegram-desktop
+  - name: Install from snap
+    become: true
+    snap:
+      name: '{{ package }}'
+      state: present
+    vars:
+      package:
+      - postman
+      - monolith               # https://github.com/Y2Z/monolith
+      - telegram-desktop
 
 
-          # Google Chrome
-          - name: Download Google Chrome
-            become: true
-            get_url:
-                url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-                dest: /tmp/
-          - name: Install Google Chrome
-            become: true
-            apt:
-                deb: /tmp/google-chrome-stable_current_amd64.deb
+  # Google Chrome
+  - name: Download Google Chrome
+    become: true
+    get_url:
+      url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      dest: /tmp/
+  - name: Install Google Chrome
+    become: true
+    apt:
+      deb: /tmp/google-chrome-stable_current_amd64.deb

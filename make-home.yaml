@@ -1,17 +1,17 @@
 ---
-    - hosts: 127.0.0.1
-      connection: local
-      gather_facts: false
+- hosts: 127.0.0.1
+  connection: local
+  gather_facts: false
 
-      tasks:
-          # Git
-          - name: Set default git user name
-            community.general.git_config:
-                name: user.name
-                scope: global
-                value: akili
-          - name: Set default git user email
-            community.general.git_config:
-                name: user.email
-                scope: global
-                value: sedov.anton1986@gmail.com
+  tasks:
+  # Git
+  - name: Set default git user name
+    community.general.git_config:
+      name: user.name
+      scope: global
+      value: akili
+  - name: Set default git user email
+    community.general.git_config:
+      name: user.email
+      scope: global
+      value: sedov.anton1986@gmail.com
