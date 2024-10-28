@@ -39,6 +39,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'justinmk/vim-sneak'
     Plug 'preservim/nerdtree'
     Plug 'unblevable/quick-scope'
+    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 call plug#end()
 
 " General settings, hotkeys from small plugins
