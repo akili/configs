@@ -15,6 +15,7 @@
           - keepassxc
 
     - name: Install obsidian
+      become: true
       snap:
         name: obsidian
         state: present
