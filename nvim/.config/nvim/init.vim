@@ -17,7 +17,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
     Plug 'nvim-treesitter/nvim-treesitter-context'
     Plug 'nvim-lua/plenary.nvim' " telescope dep
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' } " treesitter dep
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' } " treesitter dep
     Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
     " LSP
     Plug 'neovim/nvim-lspconfig'
