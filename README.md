@@ -5,3 +5,6 @@ Tested only on Ubuntu 22.04
 ```bash
 wget -O - https://raw.githubusercontent.com/akili/configs/master/configure_os.sh | bash <(cat) </dev/tty
 ```
+
+### Terminal settings
+Terminal bg color - #002137
