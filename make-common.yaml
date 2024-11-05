@@ -161,8 +161,9 @@
       blockinfile:
         path: ~/.zshrc
         block: |
-          alias mf="make format"
-          alias mc="make check"
+          alias mkf="make format"
+          alias mkc="make check"
+          alias mkt="make test"
     - name: Add zplug
       blockinfile:
         path: ~/.zshrc
