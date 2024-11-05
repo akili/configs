@@ -163,6 +163,26 @@
         block: |
           alias mf="make format"
           alias mc="make check"
+    - name: Add zplug
+      blockinfile:
+        path: ~/.zshrc
+        block: |
+          autoload -Uz compinit && compinit
+
+          source ~/.zplug/init.zsh
+
+          zplug "woefe/git-prompt.zsh", use:"{git-prompt.zsh,examples/wprompt.zsh}"
+
+          # Install plugins if there are plugins that have not been installed
+          if ! zplug check --verbose; then
+              printf "Install? [y/N]: "
+              if read -q; then
+                  echo; zplug install
+              fi
+          fi
+
+          # Then, source plugins and add commands to $PATH
+          zplug load
 
     # tmux
     - name: Install tmux plugin manager
