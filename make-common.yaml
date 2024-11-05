@@ -151,6 +151,7 @@
       blockinfile:
         path: ~/.zshrc
         block: |
+          # Custom prompt
           prompt_context() {
             if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
               prompt_segment black yellow $USER
@@ -161,6 +162,7 @@
       blockinfile:
         path: ~/.zshrc
         block: |
+          # My aliases
           alias mkf="make format"
           alias mkc="make check"
           alias mkt="make test"
