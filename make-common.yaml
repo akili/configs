@@ -113,6 +113,7 @@
       vars:
         pipx_packages:
           - pyright
+          - ruff
       community.general.pipx:
         name: "{{ item }}"
         state: latest
