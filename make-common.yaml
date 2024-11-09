@@ -42,7 +42,6 @@
           - pwgen
           - jq
           - clang
-          - gnome-shell-pomodoro
           - ripgrep
           - net-tools
           - shellcheck
