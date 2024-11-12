@@ -31,7 +31,6 @@
           - ca-certificates
           - curl
           - gnupg-agent
-          - software-properties-common
           - build-essential
           - zsh
           - stow
@@ -50,6 +49,7 @@
           - tidy
           - lookatme
           - python3.13
+          - pipx
     - name: Install ansible collection
       shell: ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto
 
@@ -91,17 +91,6 @@
       become: true
       shell: usermod -aG docker {{ lookup('env','USER') }}
 
-    # pip
-    - name: Install packages with pip
-      become: true
-      pip:
-        extra_args: --upgrade
-        name:
-          - docker-compose
-          - pynvim
-          - pre-commit
-          - pipx
-
     # Pipx
     - name: Ensurepath
       shell: pipx ensurepath
@@ -111,6 +100,7 @@
         pipx_packages:
           - pyright
           - ruff
+          - pre-commit
       community.general.pipx:
         name: "{{ item }}"
         state: latest
