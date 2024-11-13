@@ -28,7 +28,6 @@
         state: present
       vars:
         package:
-          - postman
           - monolith # https://github.com/Y2Z/monolith
           - telegram-desktop
           - umlet-standalone
