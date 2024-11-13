@@ -135,6 +135,12 @@
         path: ~/.zshrc
         search_string: ZSH_THEME="robbyrussell"
         line: ZSH_THEME="agnoster"
+    - name: Check for zplug
+      shell: if [ -d ~/.zplug ]; then echo 'yes'; else echo 'no'; fi
+      register: zplug_installed
+    - name: Install zplug
+      when: zplug_installed.stdout.find("no") != -1
+      shell: zsh -c "curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh"
     - name: Add code to .zshrc
       blockinfile:
         path: ~/.zshrc
