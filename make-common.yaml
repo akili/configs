@@ -135,18 +135,7 @@
         path: ~/.zshrc
         search_string: ZSH_THEME="robbyrussell"
         line: ZSH_THEME="agnoster"
-    - name: Delete host name from prompt
-      blockinfile:
-        path: ~/.zshrc
-        block: |
-          # Custom prompt
-          prompt_context() {
-            if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-              prompt_segment black yellow $USER
-
-            fi
-          }
-    - name: Add aliases
+    - name: Add code to .zshrc
       blockinfile:
         path: ~/.zshrc
         block: |
@@ -154,24 +143,17 @@
           alias mkf="make format"
           alias mkc="make check"
           alias mkt="make test"
-    - name: Add zplug
-      blockinfile:
-        path: ~/.zshrc
-        block: |
+
           # Zplug block
           autoload -Uz compinit && compinit
-
           source ~/.zplug/init.zsh
-
           zplug "woefe/git-prompt.zsh", use:"{git-prompt.zsh,examples/wprompt.zsh}"
-
           if ! zplug check --verbose; then
               printf "Install? [y/N]: "
               if read -q; then
                   echo; zplug install
               fi
           fi
-
           zplug load
 
     # tmux
