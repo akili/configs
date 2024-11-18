@@ -12,4 +12,4 @@ Terminal bg color - #002137
 
 ### Optional steps
 
-[Yandex disk] (https://yandex.ru/support/yandex-360/customers/disk/desktop/linux/ru/installation)
+[Yandex disk](https://yandex.ru/support/yandex-360/customers/disk/desktop/linux/ru/installation)
