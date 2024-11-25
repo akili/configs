@@ -34,7 +34,6 @@
           - build-essential
           - zsh
           - stow
-          - tig
           - npm
           - fzf
           - exuberant-ctags
