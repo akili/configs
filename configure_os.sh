@@ -35,13 +35,13 @@ VAULT_PASS_FILE=vault.txt
 VARS_FILE=vars.yaml
 
  if [ ! -f $VAULT_PASS_FILE ]; then
-    read -p 'Creating file with ansible-vault password. Write pass: ' -sr pass
+    read -p 'Creating file with ansible-vault password. Enter pass: ' -sr pass
     echo "$pass" > $VAULT_PASS_FILE
     echo
 fi;
 
 if [ ! -f $VARS_FILE ]; then
-    read -p 'Creating file with ansible encrypted vars. Write became pass: ' -sr pass
+    read -p 'Creating file with ansible encrypted vars. Enter became pass: ' -sr pass
     echo "ansible_become_pass: $pass" > $VARS_FILE
     echo
     ansible-vault encrypt $VARS_FILE
@@ -58,11 +58,11 @@ ansible-playbook make-common.yaml -i hosts --vault-password-file=$VAULT_PASS_FIL
 case "$locality" in
     "w")
         ansible-playbook make-work.yaml -i hosts --user "$USER"
-        echo "Work apps configurated"
+        echo "Work apps are configured."
         ;;
     "h")
         ansible-playbook make-home.yaml -i hosts --user "$USER"
-        echo "Home apps configurated"
+        echo "Home apps are configured."
         ;;
     *)
         echo -e "${BOLD_RED}ERROR!${RED} Invalid option. Locality wasn't configured."
@@ -79,7 +79,7 @@ stow nvim
 stow tmux
 
 default_answer="y"
-read -p "Installation and configuration are completed. Reboot the system (Y/n)? " -r answer
+read -p "Installation and configuration are complete. Reboot the system (Y/n)? " -r answer
 answer=${answer:-$default_answer}
 if [[ "$answer" == "y" ]]; then
     sudo reboot now
