@@ -70,7 +70,7 @@ case "$locality" in
 esac
 
 if [[ "$desktop" == "y" ]]; then
-        ansible-playbook install-desktop-apps.yaml -i hosts --vault-password-file=$VAULT_PASS_FILE --user "$USER"
+    ansible-playbook install-desktop-apps.yaml -i hosts --vault-password-file=$VAULT_PASS_FILE --user "$USER"
 fi;
 
 # Use stow to manage dotfiles
