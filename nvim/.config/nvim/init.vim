@@ -27,7 +27,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'williamboman/mason-lspconfig.nvim'
     " Git
     Plug 'rhysd/git-messenger.vim'
-    Plug 'airblade/vim-gitgutter'
     Plug 'tpope/vim-fugitive'
     Plug 'junegunn/gv.vim'
     Plug 'f-person/git-blame.nvim'
