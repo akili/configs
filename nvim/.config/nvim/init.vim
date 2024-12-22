@@ -1,4 +1,5 @@
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+
     " ---Visual---
     Plug 'navarasu/onedark.nvim'
     Plug 'vim-airline/vim-airline'
@@ -6,6 +7,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
     " ---Code---
     Plug 'hrsh7th/nvim-cmp'
+
     Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'majutsushi/tagbar'
     Plug 'hoschi/yode-nvim'
@@ -31,6 +33,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'junegunn/gv.vim'
     Plug 'f-person/git-blame.nvim'
     Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'lewis6991/gitsigns.nvim'
 
     " ---Nvim improvements---
     Plug 'Pocco81/auto-save.nvim'
@@ -59,6 +62,7 @@ source $HOME/.config/nvim/plugins/code/treesitter.lua
 source $HOME/.config/nvim/plugins/toggle_lsp.lua
 " Git
 source $HOME/.config/nvim/plugins/git_blame.vim
+source $HOME/.config/nvim/plugins/git/gitsigns.lua
 
 " Nvim improvements
 source $HOME/.config/nvim/plugins/nvim/auto_save.lua
