@@ -31,7 +31,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'rhysd/git-messenger.vim'
     Plug 'tpope/vim-fugitive'
     Plug 'junegunn/gv.vim'
-    Plug 'f-person/git-blame.nvim'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'lewis6991/gitsigns.nvim'
 
@@ -61,7 +60,6 @@ source $HOME/.config/nvim/plugins/code/yode-nvim.vim
 source $HOME/.config/nvim/plugins/code/treesitter.lua
 source $HOME/.config/nvim/plugins/toggle_lsp.lua
 " Git
-source $HOME/.config/nvim/plugins/git_blame.vim
 source $HOME/.config/nvim/plugins/git/gitsigns.lua
 
 " Nvim improvements
