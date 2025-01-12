@@ -149,6 +149,7 @@
           alias mkf="make format"
           alias mkc="make check"
           alias mkt="make test"
+          alias aptu="sudo apt update && sudo apt upgrade -y && sudo apt autoremove"
 
           # Zplug block
           autoload -Uz compinit && compinit
