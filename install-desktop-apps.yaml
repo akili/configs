@@ -31,6 +31,7 @@
           - monolith # https://github.com/Y2Z/monolith
           - telegram-desktop
           - umlet-standalone
+          - bruno
 
     # Google Chrome
     - name: Download Google Chrome
