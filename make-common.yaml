@@ -172,12 +172,12 @@
     # neovim
     - name: Download neovim
       get_url:
-        url: https://github.com/neovim/neovim-releases/releases/download/stable/nvim-linux64.deb
+        url: https://github.com/neovim/neovim-releases/releases/download/stable/nvim-linux-x86_64.deb
         dest: /tmp/
     - name: Install neovim
       become: true
       apt:
-        deb: /tmp/nvim-linux64.deb
+        deb: /tmp/nvim-linux-x86_64.deb
         force: yes
     - name: Install npm packages
       become: true
