@@ -106,6 +106,9 @@
         state: latest
       with_items: "{{ pipx_packages }}"
 
+    - name: Add poetry shell plugin
+      shell: poetry self add poetry-plugin-shell
+
     # zsh
     - name: Make zsh default shell
       become: true
