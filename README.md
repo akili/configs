@@ -9,6 +9,7 @@ wget -O - https://raw.githubusercontent.com/akili/configs/master/configure_os.sh
 #### Terminal settings
 
 Terminal bg color: #002137
+
 Palette color 8: #93A1A1 (autosuggestions color)
 
 #### Optional software
