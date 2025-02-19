@@ -91,9 +91,6 @@
       shell: usermod -aG docker {{ lookup('env','USER') }}
 
     # Pipx
-    - name: Ensurepath
-      shell: pipx ensurepath
-
     - name: Install multiple packages with pipx
       vars:
         pipx_packages:
@@ -105,9 +102,6 @@
         name: "{{ item }}"
         state: latest
       with_items: "{{ pipx_packages }}"
-
-    - name: Add poetry shell plugin
-      shell: poetry self add poetry-plugin-shell
 
     # zsh
     - name: Make zsh default shell
