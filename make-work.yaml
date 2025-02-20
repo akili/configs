@@ -29,3 +29,12 @@
         repo: ~/configs
         name: user.email
         value: sedov.anton1986@gmail.com
+
+    - name: Install apt packages for work
+      become: true
+      apt:
+        name: "{{ package }}"
+      vars:
+        package:
+          - pwgen
+          - postgresql-client
