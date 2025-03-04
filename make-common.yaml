@@ -96,6 +96,7 @@
           - ruff
           - pre-commit
           - poetry
+          - uv
       community.general.pipx:
         name: "{{ item }}"
         state: latest
