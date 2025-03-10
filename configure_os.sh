@@ -78,9 +78,6 @@ stow vim
 stow nvim
 stow tmux
 
-# Different strange things
-~/.local/share/pipx/venvs/poetry/bin/poetry self add poetry-plugin-shell
-
 default_answer="y"
 read -p "Installation and configuration are complete. Reboot the system (Y/n)? " -r answer
 answer=${answer:-$default_answer}
