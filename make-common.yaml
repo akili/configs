@@ -25,7 +25,6 @@
           - git
           - vim
           - tmux
-          - bat
           - htop
           - apt-transport-https
           - ca-certificates
