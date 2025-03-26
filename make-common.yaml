@@ -207,10 +207,3 @@
         remote_src: yes
     - name: Clear fonts cache
       shell: fc-cache -fv
-
-    - name: Create symlink for bat
-      become: true
-      file:
-        src: /usr/bin/batcat
-        dest: /usr/local/bin/bat
-        state: link
