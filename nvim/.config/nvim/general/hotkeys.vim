@@ -1,5 +1,5 @@
 " turn off search highlight
-nnoremap ,<space> :nohlsearch<CR>
+nnoremap h<space> :nohlsearch<CR>
 
 inoremap jk <Esc>
 
