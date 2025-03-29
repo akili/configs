@@ -88,18 +88,21 @@
       shell: usermod -aG docker {{ lookup('env','USER') }}
 
     # Pipx
-    - name: Install multiple packages with pipx
+    - name: Install some packages with pipx
       vars:
         pipx_packages:
           - pyright
           - ruff
           - pre-commit
           - poetry
-          - uv
       community.general.pipx:
         name: "{{ item }}"
         state: latest
       with_items: "{{ pipx_packages }}"
+
+    # uv
+    - name: Install uv
+      shell: curl -LsSf https://astral.sh/uv/install.sh | sh
 
     # zsh
     - name: Make zsh default shell
