@@ -156,7 +156,7 @@
           zplug load
 
           # Update PATH
-          export PATH=$PATH:/usr/local/go/bin
+          export "PATH=$PATH:/usr/local/go/bin"
 
     # tmux
     - name: Install tmux plugin manager
