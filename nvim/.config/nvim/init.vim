@@ -12,7 +12,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'majutsushi/tagbar'
     Plug 'hoschi/yode-nvim'
     Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-    Plug 'jiangmiao/auto-pairs'
+    Plug 'windwp/nvim-autopairs'
     Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
     " Treesitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -58,6 +58,7 @@ source $HOME/.config/nvim/plugins/code/lsp.lua
 source $HOME/.config/nvim/plugins/code/tagbar.lua
 source $HOME/.config/nvim/plugins/code/yode-nvim.vim
 source $HOME/.config/nvim/plugins/code/treesitter.lua
+source $HOME/.config/nvim/plugins/code/autopairs.lua
 source $HOME/.config/nvim/plugins/toggle_lsp.lua
 " Git
 source $HOME/.config/nvim/plugins/git/gitsigns.lua
