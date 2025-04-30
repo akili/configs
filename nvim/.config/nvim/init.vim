@@ -13,7 +13,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'hoschi/yode-nvim'
     Plug 'JoosepAlviste/nvim-ts-context-commentstring'
     Plug 'windwp/nvim-autopairs'
-    Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
     Plug 'kevinhwang91/promise-async'  " for nvim-ufo
     Plug 'kevinhwang91/nvim-ufo', {'do': ':UpdateRemotePlugins'}
     " Treesitter
@@ -55,6 +54,7 @@ source $HOME/.config/nvim/plugins/visual/theme.lua
 source $HOME/.config/nvim/plugins/airline.vim
 
 " Codding helpers
+source $HOME/.config/nvim/plugins/code/general.lua
 source $HOME/.config/nvim/plugins/code/nvim-cmp.lua
 source $HOME/.config/nvim/plugins/code/lsp.lua
 source $HOME/.config/nvim/plugins/code/tagbar.lua
@@ -62,7 +62,7 @@ source $HOME/.config/nvim/plugins/code/yode-nvim.vim
 source $HOME/.config/nvim/plugins/code/treesitter.lua
 source $HOME/.config/nvim/plugins/code/autopairs.lua
 source $HOME/.config/nvim/plugins/code/nvim-ufo.lua
-source $HOME/.config/nvim/plugins/toggle_lsp.lua
+
 " Git
 source $HOME/.config/nvim/plugins/git/gitsigns.lua
 
