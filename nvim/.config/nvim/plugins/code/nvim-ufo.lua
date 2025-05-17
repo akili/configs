@@ -1,5 +1,4 @@
 -- Enable basic folding options
-vim.o.foldcolumn = '1'        -- Show fold column
 vim.o.foldlevel = 99          -- All folds open by default
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true       -- Enable folding
