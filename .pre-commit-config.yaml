@@ -23,6 +23,6 @@ repos:
 
   ### Проверки безопасности ###
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.21.2
+    rev: v8.27.2
     hooks:
       - id: gitleaks-docker
