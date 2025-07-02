@@ -40,7 +40,7 @@
           - fd-find
           - lookatme
           - pipx
-          - xclip  # for yanking to clipboard in nvim
+          - xclip # for yanking to clipboard in nvim
     - name: Install ansible collection
       shell: ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto
 

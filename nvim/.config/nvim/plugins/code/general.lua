@@ -11,4 +11,3 @@ vim.diagnostic.config({
   underline = true,          -- underline the problematic code
   update_in_insert = false,  -- do not show diagnostics while typing
 })
-
