@@ -16,7 +16,7 @@
         scope: global
         value: anton.sedov@webpp.ru
 
-    # Configurate repo with this configs
+    # Configure repo with this configs
     - name: Set default git user name for configs folder
       community.general.git_config:
         scope: local

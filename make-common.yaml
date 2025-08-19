@@ -44,7 +44,7 @@
     - name: Install ansible collection
       shell: ansible-galaxy collection install community.general && ansible-galaxy collection install community.crypto
 
-    # Configurate repo with this configs
+    # Configure repo with this configs
     - name: Set ssh remote origin url
       community.general.git_config:
         scope: local
@@ -110,7 +110,7 @@
     - name: Install oh-my-zsh
       shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
       when: not ohmyzsh.stat.exists
-    - name: Install zsh-syntax-highlightin
+    - name: Install zsh-syntax-highlighting
       git:
         repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
         dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
