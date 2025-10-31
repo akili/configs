@@ -143,6 +143,7 @@
           alias mkt="make test"
           alias run="make run"
           alias aptu="sudo apt update && sudo apt upgrade -y && sudo apt autoremove"
+          alias hadolint="docker run --rm -i hadolint/hadolint < Dockerfile"
 
           # Zplug block
           autoload -Uz compinit && compinit
