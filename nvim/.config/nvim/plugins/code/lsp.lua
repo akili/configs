@@ -1,7 +1,5 @@
 --- Mason config
 require("mason").setup {}
-require("mason-lspconfig").setup { ensure_installed = { "pyright", }, }
-require 'lspconfig'.pyright.setup {}
 
 --- LSP config
 local nvim_lsp = require('lspconfig')
