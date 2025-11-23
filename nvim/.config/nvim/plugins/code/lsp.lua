@@ -1,4 +1,6 @@
 --- Mason config
+vim.deprecate = function() end
+
 require("mason").setup {}
 
 --- LSP config
