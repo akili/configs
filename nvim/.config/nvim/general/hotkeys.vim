@@ -33,11 +33,16 @@ noremap <A-q> :'<,'>normal @a<CR>
 " Fix bug with wide cmd line
 noremap <leader>w :wincmd _<CR>
 
+" For makrs. I'm using ` as main tmux hotkey
+nnoremap \ `
+
+
 " ---- Coding helpers ----
 
 " run current script with python3 by CTRL+R in command and insert mode
 autocmd FileType python map <buffer> <C-r> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <C-r> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
 
 " ---- GIT ---
 
