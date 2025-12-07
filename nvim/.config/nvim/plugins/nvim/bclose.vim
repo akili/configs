@@ -45,6 +45,7 @@ function! s:Bclose(bang, buffer)
   let wcurrent = winnr()
   for w in wnums
     execute w.'wincmd w'
+    " todo <BS>Invalid range: 2wincmd w
     let prevbuf = bufnr('#')
     if prevbuf > 0 && buflisted(prevbuf) && prevbuf != btarget
       buffer #
@@ -61,7 +62,9 @@ function! s:Bclose(bang, buffer)
       if bjump > 0
         execute 'buffer '.bjump
       else
-        execute 'enew'.a:bang
+        "execute 'enew'.a:bang
+        " I want to find another file to work with
+        execute 'NERDTreeFocus'
       endif
     endif
   endfor
@@ -70,6 +73,10 @@ function! s:Bclose(bang, buffer)
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call <SID>Bclose(<q-bang>, <q-args>)
 
-" Close tab
-nnoremap <silent> <Leader>bd :Bclose<CR>
-noremap <A-w> :bd<CR>  " My personal hotkey
+" --- Hotkeys ---
+" Close one tab
+noremap <A-w> :Bclose<CR>
+" Close all tabs and open nerd tree
+noremap <A-W> :%bd \| NERDTreeFocus<CR>
+" Close nvim
+noremap <A-q> :qall<CR>
