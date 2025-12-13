@@ -1,8 +1,7 @@
 -- https://github.com/preservim/nerdtree
 
-vim.keymap.set('n', '<leader>n', ':NERDTreeFocus<CR>')
 vim.keymap.set('n', '<C-t>', ':NERDTreeFind<CR>')
-vim.keymap.set('n', '<F2>', ':NERDTreeRefreshRoot<CR> :NERDTreeToggle<CR>')
+vim.keymap.set('n', '<leader>n', ':NERDTreeRefreshRoot<CR> :NERDTreeToggle<CR>')
 vim.g.NERDTreeShowHidden = 1
 vim.g.NERDTreeIgnore = {
     '\\.pyc$',
