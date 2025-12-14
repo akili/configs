@@ -41,6 +41,8 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'preservim/nerdtree'
     Plug 'unblevable/quick-scope'
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+    Plug 'chentoast/marks.nvim'
+
 call plug#end()
 
 " General settings, hotkeys from small plugins
@@ -69,5 +71,6 @@ source $HOME/.config/nvim/plugins/nvim/auto_save.lua
 source $HOME/.config/nvim/plugins/nvim/zen_mode.lua
 source $HOME/.config/nvim/plugins/nvim/bclose.vim
 source $HOME/.config/nvim/plugins/nvim/nerd_tree.lua
+source $HOME/.config/nvim/plugins/nvim/marks.lua
 source $HOME/.config/nvim/plugins/quickscope.vim
 source $HOME/.config/nvim/plugins/fzf.lua
