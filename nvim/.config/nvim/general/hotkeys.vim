@@ -1,8 +1,6 @@
 " turn off search highlight
 nnoremap h<space> :nohlsearch<CR>
 
-inoremap jj <Esc>
-
 " Use alt + hjkl to resize windows
 nnoremap <S-down>   :resize -2<CR>
 nnoremap <S-up>     :resize +2<CR>
