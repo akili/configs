@@ -10,3 +10,6 @@ keymap("n", "n", "nzz", default_opts)
 keymap("n", "N", "Nzz", default_opts)
 keymap("v", "<", "<gv", default_opts)
 keymap("v", ">", ">gv", default_opts)
+
+keymap("n", "<leader>t", ":split | terminal<CR>", { silent = true })
+keymap("n", "<leader>T", ":vsplit | terminal<CR>", { silent = true })
