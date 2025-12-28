@@ -16,7 +16,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'kevinhwang91/nvim-ufo', {'do': ':UpdateRemotePlugins'}
     " Treesitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+    "Plug 'nvim-treesitter/nvim-treesitter-textobjects'
     Plug 'nvim-treesitter/nvim-treesitter-context'
     Plug 'nvim-lua/plenary.nvim' " telescope dep
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' } " treesitter dep
