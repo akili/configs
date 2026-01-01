@@ -10,7 +10,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
     Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'majutsushi/tagbar'
-    Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+    Plug 'numToStr/Comment.nvim'
     Plug 'windwp/nvim-autopairs'
     Plug 'kevinhwang91/promise-async'  " for nvim-ufo
     Plug 'kevinhwang91/nvim-ufo', {'do': ':UpdateRemotePlugins'}
@@ -62,6 +62,7 @@ source $HOME/.config/nvim/plugins/code/tagbar.lua
 source $HOME/.config/nvim/plugins/code/treesitter.lua
 source $HOME/.config/nvim/plugins/code/autopairs.lua
 source $HOME/.config/nvim/plugins/code/nvim-ufo.lua
+source $HOME/.config/nvim/plugins/code/comment.lua
 
 " Git
 source $HOME/.config/nvim/plugins/git/gitsigns.lua
