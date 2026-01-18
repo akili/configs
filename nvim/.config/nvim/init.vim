@@ -21,6 +21,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'nvim-lua/plenary.nvim' " telescope dep
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' } " treesitter dep
     Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+    Plug 'nvim-tree/nvim-web-devicons' " fzf-lua dep
     " LSP
     Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/cmp-nvim-lsp'
