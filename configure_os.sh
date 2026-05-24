@@ -47,11 +47,6 @@ if [ ! -f $VARS_FILE ]; then
     ansible-vault encrypt $VARS_FILE
 fi;
 
-# Install Ansible
-sudo apt install software-properties-common
-sudo add-apt-repository --yes --update ppa:ansible/ansible
-sudo apt install -y ansible
-
 # Run Ansible playbooks
 ansible-playbook make-common.yaml -i hosts --vault-password-file=$VAULT_PASS_FILE --user "$USER"
 
