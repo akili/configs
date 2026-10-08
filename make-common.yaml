@@ -145,6 +145,7 @@
           alias run="make run"
           alias aptu="sudo apt update && sudo apt upgrade -y && sudo apt autoremove"
           alias hadolint="docker run --rm -i hadolint/hadolint < Dockerfile"
+          alias clip='xclip -selection clipboard'
 
           # Zplug block
           autoload -Uz compinit && compinit
