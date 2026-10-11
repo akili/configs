@@ -3,3 +3,6 @@ test:
 
 check:
 	echo "Success"
+
+manjaro:
+	ansible-playbook setup-manjaro.yaml --ask-become-pass
