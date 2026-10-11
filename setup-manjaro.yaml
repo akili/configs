@@ -1,0 +1,280 @@
+---
+- name: Configure Manjaro workstation
+  hosts: 127.0.0.1
+  connection: local
+  become: false
+  gather_facts: true
+
+  vars_files:
+    - vars.yaml
+
+  vars:
+    user_home: "{{ ansible_env.HOME }}"
+    user_name: "{{ ansible_env.USER }}"
+    ssh_key_path: "{{ user_home }}/.ssh/id_rsa"
+
+    system_packages:
+      - git
+      - vim
+      - neovim
+      - tmux
+      - htop
+      - curl
+      - ca-certificates
+      - gnupg
+      - base-devel
+      - zsh
+      - stow
+      - npm
+      - fzf
+      - ctags
+      - jq
+      - clang
+      - ripgrep
+      - net-tools
+      - shellcheck
+      - shfmt
+      - fd
+      - python-pipx
+      - xclip
+      - nmap
+      - docker
+      - docker-compose
+      - go
+      - fontconfig
+      - unzip
+      - ttf-hack-nerd
+
+    pipx_packages:
+      - pyright
+      - ruff
+      - pre-commit
+      - lookatme
+
+    npm_packages:
+      - typescript
+      - dockerfile-language-server-nodejs
+      - yaml-language-server
+      - bash-language-server
+
+  tasks:
+    - name: Upgrade all system packages
+      become: true
+      community.general.pacman:
+        update_cache: true
+        upgrade: true
+
+    - name: Install system packages
+      become: true
+      community.general.pacman:
+        name: "{{ system_packages }}"
+        state: present
+
+    - name: Install Ansible collections
+      ansible.builtin.command:
+        argv:
+          - ansible-galaxy
+          - collection
+          - install
+          - "{{ item }}"
+      loop:
+        - community.general
+        - community.crypto
+      changed_when: false
+
+    # Git configuration
+    - name: Configure repository remote
+      community.general.git_config:
+        scope: local
+        repo: "{{ user_home }}/configs"
+        name: remote.origin.url
+        value: "git@github.com:akili/configs.git"
+
+    - name: Set Neovim as Git editor
+      community.general.git_config:
+        scope: global
+        name: core.editor
+        value: nvim
+
+    # SSH
+    - name: Create SSH directory
+      ansible.builtin.file:
+        path: "{{ user_home }}/.ssh"
+        state: directory
+        mode: "0700"
+
+    - name: Generate SSH keypair
+      community.crypto.openssh_keypair:
+        path: "{{ ssh_key_path }}"
+        type: ed25519
+        state: present
+        comment: "{{ user_name }}@{{ ansible_hostname }}"
+
+    # Docker
+#    - name: Enable and start Docker
+#      become: true
+#      ansible.builtin.service:
+#        name: docker
+#        enabled: true
+#        state: started
+
+    - name: Add user to Docker group
+      become: true
+      ansible.builtin.user:
+        name: "{{ user_name }}"
+        groups: docker
+        append: true
+
+    # uv
+    - name: Check whether uv is installed
+      ansible.builtin.command:
+        argv: [uv, --version]
+      register: uv_version
+      changed_when: false
+      failed_when: false
+
+    - name: Install uv
+      ansible.builtin.shell:
+        cmd: curl -LsSf https://astral.sh/uv/install.sh | sh
+      when: uv_version.rc != 0
+
+    # Zsh
+    - name: Check Oh My Zsh installation
+      ansible.builtin.stat:
+        path: "{{ user_home }}/.oh-my-zsh"
+      register: ohmyzsh
+
+    - name: Install Oh My Zsh
+      ansible.builtin.shell:
+        cmd: >
+          RUNZSH=no CHSH=no
+          sh -c "$(curl -fsSL
+          https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      when: not ohmyzsh.stat.exists
+
+    - name: Install Zsh plugins
+      ansible.builtin.git:
+        repo: "{{ item.repo }}"
+        dest: "{{ user_home }}/.oh-my-zsh/custom/plugins/{{ item.name }}"
+        version: master
+        update: true
+      loop:
+        - name: zsh-syntax-highlighting
+          repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+        - name: zsh-autosuggestions
+          repo: https://github.com/zsh-users/zsh-autosuggestions.git
+
+    - name: Configure Oh My Zsh plugins
+      ansible.builtin.lineinfile:
+        path: "{{ user_home }}/.zshrc"
+        regexp: '^plugins=\(.*\)$'
+        line: >-
+          plugins=(git docker docker-compose common-aliases
+          zsh-autosuggestions zsh-syntax-highlighting fzf)
+        create: true
+
+    - name: Configure Zsh theme
+      ansible.builtin.lineinfile:
+        path: "{{ user_home }}/.zshrc"
+        regexp: '^ZSH_THEME='
+        line: 'ZSH_THEME="agnoster"'
+        create: true
+
+    - name: Check zplug installation
+      ansible.builtin.stat:
+        path: "{{ user_home }}/.zplug"
+      register: zplug
+
+    - name: Install zplug
+      ansible.builtin.shell:
+        cmd: >
+          curl -sL --proto-redir -all,https
+          https://raw.githubusercontent.com/zplug/installer/master/installer.zsh
+          | zsh
+      when: not zplug.stat.exists
+
+    - name: Configure aliases and Zsh
+      ansible.builtin.blockinfile:
+        path: "{{ user_home }}/.zshrc"
+        create: true
+        marker: "# {mark} ANSIBLE MANAGED CONFIGURATION"
+        block: |
+          # My aliases
+          alias mkf="make format"
+          alias mkc="make check"
+          alias mkt="make test"
+          alias run="make run"
+          alias pacu="sudo pacman -Syu"
+          alias hadolint="docker run --rm -i hadolint/hadolint < Dockerfile"
+          alias clip='xclip -selection clipboard'
+
+          # Zplug
+          autoload -Uz compinit && compinit
+          if [[ -f ~/.zplug/init.zsh ]]; then
+            source ~/.zplug/init.zsh
+            zplug "woefe/git-prompt.zsh", use:"{git-prompt.zsh,examples/wprompt.zsh}"
+            if ! zplug check --verbose; then
+              printf "Install? [y/N]: "
+              if read -q; then
+                echo
+                zplug install
+              fi
+            fi
+            zplug load
+          fi
+
+          # Go
+          export PATH="$PATH:/usr/local/go/bin"
+
+    # tmux
+    - name: Install tmux plugin manager
+      ansible.builtin.git:
+        repo: https://github.com/tmux-plugins/tpm
+        dest: "{{ user_home }}/.tmux/plugins/tpm"
+        version: master
+        update: true
+
+    # npm packages
+    - name: Configure npm global directory
+      ansible.builtin.file:
+        path: "{{ user_home }}/.local/share/npm"
+        state: directory
+        mode: "0755"
+
+    - name: Configure npm prefix
+      ansible.builtin.command:
+        argv:
+          - npm
+          - config
+          - set
+          - prefix
+          - "{{ user_home }}/.local/share/npm"
+      changed_when: false
+
+    - name: Add npm binaries to PATH
+      ansible.builtin.blockinfile:
+        path: "{{ user_home }}/.zshrc"
+        create: true
+        marker: "# {mark} ANSIBLE NPM PATH"
+        block: |
+          export PATH="$HOME/.local/share/npm/bin:$PATH"
+
+    - name: Install npm language servers
+      community.general.npm:
+        name: "{{ item }}"
+        global: true
+        state: present
+      loop: "{{ npm_packages }}"
+
+    # Neovim vim-plug
+    - name: Create Neovim autoload directory
+      ansible.builtin.file:
+        path: "{{ user_home }}/.local/share/nvim/site/autoload"
+        state: directory
+        mode: "0755"
+
+    - name: Install vim-plug
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        dest: "{{ user_home }}/.local/share/nvim/site/autoload/plug.vim"
+        mode: "0644"
