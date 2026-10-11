@@ -49,7 +49,6 @@
       - pyright
       - ruff
       - pre-commit
-      - lookatme
 
     npm_packages:
       - typescript
@@ -111,12 +110,12 @@
         comment: "{{ user_name }}@{{ ansible_hostname }}"
 
     # Docker
-#    - name: Enable and start Docker
-#      become: true
-#      ansible.builtin.service:
-#        name: docker
-#        enabled: true
-#        state: started
+    #    - name: Enable and start Docker
+    #      become: true
+    #      ansible.builtin.service:
+    #        name: docker
+    #        enabled: true
+    #        state: started
 
     - name: Add user to Docker group
       become: true
@@ -124,6 +123,13 @@
         name: "{{ user_name }}"
         groups: docker
         append: true
+
+    # pipx
+    - name: Install Python CLI tools
+      community.general.pipx:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ pipx_packages }}"
 
     # uv
     - name: Check whether uv is installed
@@ -176,7 +182,7 @@
     - name: Configure Zsh theme
       ansible.builtin.lineinfile:
         path: "{{ user_home }}/.zshrc"
-        regexp: '^ZSH_THEME='
+        regexp: "^ZSH_THEME="
         line: 'ZSH_THEME="agnoster"'
         create: true
 
