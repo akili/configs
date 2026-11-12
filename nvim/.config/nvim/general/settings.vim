@@ -35,6 +35,12 @@ set fileformat=unix
 set hidden                  " Required to keep multiple buffers open multiple buffers
 set formatoptions-=cro      " Stop newline continution of comments
 
+" for nvim-ufo
+set foldcolumn=1
+set foldlevel=99
+set foldlevelstart=99
+set foldenable
+
 :au FocusLost * :wa
 
 " open new split panes to right and below
