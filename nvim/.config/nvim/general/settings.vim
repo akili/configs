@@ -36,7 +36,6 @@ set hidden                  " Required to keep multiple buffers open multiple bu
 set formatoptions-=cro      " Stop newline continution of comments
 
 " for nvim-ufo
-set foldcolumn=1
 set foldlevel=99
 set foldlevelstart=99
 set foldenable
