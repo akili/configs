@@ -1,7 +1,7 @@
 require'nvim-treesitter.install'.compilers = { 'clang' }
 -- https://github.com/nvim-treesitter/nvim-treesitter-context
 require'treesitter-context'.setup({
-    enable = true,
+    enable = false,
     max_lines = 0,
     trim_scope = 'outer',
     patterns = {
