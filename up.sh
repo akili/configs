@@ -94,3 +94,15 @@ tmux select-layout \
     "$LAYOUT"
 
 tmux select-window -t "$NEW_WINDOW"
+tmux select-pane -t "${NEW_WINDOW}.3"
+
+# Pane 0: activate Python virtual environment
+tmux send-keys -t "${NEW_WINDOW}.0" "source .venv/bin/activate" C-m
+
+# Pane 1: activate Python virtual environment
+tmux send-keys -t "${NEW_WINDOW}.1" "source .venv/bin/activate" C-m
+
+# Pane 2: leave empty
+
+# Pane 3: start Neovim
+tmux send-keys -t "${NEW_WINDOW}.3" "nvim ." C-m
